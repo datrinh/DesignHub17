@@ -1,0 +1,8 @@
+<button (click)="videoService.play()" md-icon-button color="primary">
+  <md-icon *ngIf="videoService.player.paused">play_arrow</md-icon>
+  <md-icon *ngIf="!videoService.player.paused">pause</md-icon>
+</button>
+<button (click)="videoService.mute()" md-icon-button>
+  <md-icon *ngIf="videoService.player.muted">volume_off</md-icon>
+  <md-icon *ngIf="!videoService.player.muted">volume_up</md-icon>
+</button>
