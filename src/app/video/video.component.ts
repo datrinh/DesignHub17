@@ -12,7 +12,7 @@ export class VideoComponent implements OnInit {
 
   @ViewChild('video') video;
 
-  constructor(private videoService: VideoService) { }
+  constructor(public videoService: VideoService) { }
 
   ngOnInit() {
     this.videoService.player = this.video.nativeElement;

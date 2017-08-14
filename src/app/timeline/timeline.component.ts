@@ -9,7 +9,7 @@ import { MdSliderChange } from '@angular/material';
 })
 export class TimelineComponent implements OnInit {
 
-  constructor(private videoService: VideoService) { }
+  constructor(public videoService: VideoService) { }
 
   ngOnInit() {
   }

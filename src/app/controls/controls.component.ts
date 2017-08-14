@@ -7,7 +7,7 @@ import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
   styleUrls: ['./controls.component.scss']
 })
 export class ControlsComponent implements OnInit {
-  constructor(private videoService: VideoService) { }
+  constructor(public videoService: VideoService) { }
 
   ngOnInit() {
   }

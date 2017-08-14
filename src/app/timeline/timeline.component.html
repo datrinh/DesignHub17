@@ -1,6 +1,5 @@
 <md-slider
   (input)="setCurrentTime($event)" 
-  [color]="primary"
   [min]="0"
   [max]="videoService.duration$ | async"
   [step]="0.01"
