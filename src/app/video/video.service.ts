@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class VideoService {
+
   player: HTMLVideoElement;
 
   get currentTime(): number {
@@ -32,7 +33,7 @@ export class VideoService {
 
   constructor() { }
 
-  play() {
+  playOrPause() {
     if (this.isPlaying()) {
       this.player.pause();
     } else {

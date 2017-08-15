@@ -1,4 +1,4 @@
-<button (click)="videoService.play()" md-icon-button color="primary">
+<button (click)="videoService.playOrPause()" md-icon-button color="accent">
   <md-icon *ngIf="videoService.player.paused">play_arrow</md-icon>
   <md-icon *ngIf="!videoService.player.paused">pause</md-icon>
 </button>

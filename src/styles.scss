@@ -10,3 +10,8 @@ body {
     min-height: 100vh;
     font-family: 'Roboto', sans-serif;
 }
+
+.blur {
+	background-color: rgba(#FAFAFA, 0.3);
+	// filter: blur(10px);
+}

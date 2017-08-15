@@ -1,13 +1,20 @@
-<dh-video></dh-video>
+<md-sidenav-container class="example-container">
+	<md-sidenav #sidenav class="example-sidenav">
+	  Jolly good!
+	</md-sidenav>
 
-<main>
-	<nav id="menu">
-		<button md-icon-button><md-icon>menu</md-icon></button>
-	</nav>
+	<dh-video></dh-video>
 
-	<dh-controls id="controls"></dh-controls>
+	<main>
+		<nav id="menu">
+			<button md-icon-button (click)="sidenav.open()"><md-icon>menu</md-icon></button>
+		</nav>
 
-	<dh-timeline id="timeline"></dh-timeline>
+		<dh-controls class="blur" id="controls"></dh-controls>
 
-	<dh-action-controls id="action-selection"></dh-action-controls>
-</main>
+		<dh-timeline id="timeline"></dh-timeline>
+
+		<dh-action-controls id="action-selection"></dh-action-controls>
+	</main>
+
+</md-sidenav-container>
