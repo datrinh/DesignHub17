@@ -20,7 +20,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-@angular/flex-layout@2.0.0-beta.8 MIT
+@angular/flex-layout@2.0.0-rc.1 MIT
 The MIT License
 
 Copyright (c) 2016-2017 Google, Inc.
