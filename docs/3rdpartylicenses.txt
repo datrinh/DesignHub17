@@ -46,8 +46,6 @@ THE SOFTWARE.
 
 @angular/core@4.3.4 MIT
 
-@angular/router@4.3.4 MIT
-
 @angular/http@4.3.4 MIT
 
 @angular/animations@4.3.4 MIT
