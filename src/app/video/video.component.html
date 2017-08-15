@@ -1,11 +1,10 @@
 
  <!-- <h1>Test</h1>   -->
 <video
-  fxFill
   (click)="videoService.playOrPause()"
   (timeupdate)="onTimeUpdate($event)"
   (durationchange)="onDurationChange($event)"
-  #video id="video">
+  id="video">
   <source [src]="source" type="video/mp4" />
 </video>
 <!-- <dh-controls></dh-controls> -->
