@@ -16,7 +16,7 @@ import {
   MdListModule
 } from '@angular/material';
 
-import { AppRoutingModule } from './app-routing.module';
+// import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { VideoComponent } from './video/video.component';
 import { TimePipe } from './shared/time-pipe.pipe';
@@ -52,7 +52,7 @@ const MaterialModules = [
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    // AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModules,
     FlexLayoutModule

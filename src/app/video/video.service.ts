@@ -26,6 +26,7 @@ export class VideoService {
 
   duration$: Observable<number> = this.durationSub.asObservable();
   currentTime$: Observable<number> = this.currentTimeSub.asObservable();
+
   progress$: Observable<number> = Observable
     .combineLatest(this.currentTime$, this.duration$,
     (current, duration) => this.calcProgress(current, duration));
@@ -54,6 +55,7 @@ export class VideoService {
   private isPlaying(): boolean {
     return this.player.currentTime > 0 && !this.player.paused && !this.player.ended && this.player.readyState > 2;
   }
+
 
   private calcProgress(current: number, duration: number): number {
     if (current === 0 && duration === 0) {
