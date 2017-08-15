@@ -12,7 +12,8 @@ import {
   MdSidenavModule,
   MdDialogModule,
   MdInputModule,
-  MdSnackBarModule
+  MdSnackBarModule,
+  MdListModule
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +24,7 @@ import { ControlsComponent } from './controls/controls.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { ActionControlsComponent } from './action-controls/action-controls.component';
 import { AddBookmarkComponent } from './shared/dialog/add-bookmark/add-bookmark.component';
+import { SidenavComponent } from './layout/sidenav/sidenav.component';
 
 // add all need Material modules here
 const MaterialModules = [
@@ -33,7 +35,8 @@ const MaterialModules = [
   MdSidenavModule,
   MdDialogModule,
   MdInputModule,
-  MdSnackBarModule
+  MdSnackBarModule,
+  MdListModule
 ];
 
 @NgModule({
@@ -44,7 +47,8 @@ const MaterialModules = [
     ControlsComponent,
     TimelineComponent,
     ActionControlsComponent,
-    AddBookmarkComponent
+    AddBookmarkComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
