@@ -4,7 +4,7 @@
   (click)="videoService.playOrPause()"
   (timeupdate)="onTimeUpdate($event)"
   (durationchange)="onDurationChange($event)"
-  id="video">
+  #video id="video">
   <source [src]="source" type="video/mp4" />
 </video>
 <!-- <dh-controls></dh-controls> -->
