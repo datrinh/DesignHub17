@@ -5,7 +5,7 @@ import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/
   selector: 'dh-video',
   templateUrl: './video.component.html',
   styleUrls: ['./video.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class VideoComponent implements OnInit {
 

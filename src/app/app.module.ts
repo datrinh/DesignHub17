@@ -1,4 +1,5 @@
-import { BookmarkService } from './shared/bookmark.service';
+import { AudioCommentService } from './shared/audio-comment/audio-comment.service';
+import { BookmarkService } from './shared/bookmark/bookmark.service';
 import { VideoService } from './video/video.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserModule } from '@angular/platform-browser';
@@ -19,7 +20,7 @@ import {
 // import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { VideoComponent } from './video/video.component';
-import { TimePipe } from './shared/time-pipe.pipe';
+import { TimePipe } from './shared/pipes/time-pipe.pipe';
 import { ControlsComponent } from './controls/controls.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { ActionControlsComponent } from './action-controls/action-controls.component';
@@ -60,7 +61,7 @@ const MaterialModules = [
   entryComponents: [
     AddBookmarkComponent
   ],
-  providers: [VideoService, BookmarkService],
+  providers: [VideoService, BookmarkService, AudioCommentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

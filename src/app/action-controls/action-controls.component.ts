@@ -1,6 +1,7 @@
+import { AudioCommentService } from '../shared/audio-comment/audio-comment.service';
 import { AddBookmarkComponent } from '../shared/dialog/add-bookmark/add-bookmark.component';
 import { VideoService } from '../video/video.service';
-import { BookmarkService } from '../shared/bookmark.service';
+import { BookmarkService } from '../shared/bookmark/bookmark.service';
 import { Component, OnInit } from '@angular/core';
 import { MdDialog, MdSnackBar } from '@angular/material';
 
@@ -14,11 +15,13 @@ export class ActionControlsComponent implements OnInit {
   constructor(
     private bookmark: BookmarkService,
     private video: VideoService,
+    private audio: AudioCommentService,
     private dialog: MdDialog,
     private snackbar: MdSnackBar
   ) { }
 
   ngOnInit() {
+    this.audio.init();
   }
 
   addBookmark() {
@@ -36,6 +39,14 @@ export class ActionControlsComponent implements OnInit {
         });
       }
     });
+  }
+
+  startRecording() {
+    this.audio.startRecording();
+  }
+
+  stopRecording() {
+    this.audio.stopRecording();
   }
 
 }

@@ -1,5 +1,5 @@
 import { VideoService } from '../../video/video.service';
-import { BookmarkService } from '../../shared/bookmark.service';
+import { BookmarkService } from '../../shared/bookmark/bookmark.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
