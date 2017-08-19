@@ -1,0 +1,10 @@
+<h2 md-dialog-title>Audiokommentar speichern</h2>
+<md-dialog-content>
+  <span>Zeitpunkt: {{ timestamp | timePipe:'mm:ss' }}</span>
+  <button (click)="play()" md-button><md-icon>play</md-icon> Abspielen</button>
+</md-dialog-content>
+<md-dialog-actions>
+  <button md-button [md-dialog-close]="false">Löschen</button>
+  <!-- Can optionally provide a result for the closing dialog. -->
+  <button md-button [md-dialog-close]="true" color="primary">Speichern</button>
+</md-dialog-actions>

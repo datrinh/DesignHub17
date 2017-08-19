@@ -1,28 +1,28 @@
+import { BehaviorSubject, Observable } from 'rxjs/Rx';
+import { VideoService } from '../../video/video.service';
 import { Injectable } from '@angular/core';
 
 declare var MediaRecorder: any;
 
 export interface AudioComment {
   id: number;
-  blob: Blob;
+  // blob: Blob;
   timestamp: number;
   link: string;
 }
 
 @Injectable()
 export class AudioCommentService {
-  store: AudioComment[] = [];
-
+  audioStore: AudioComment[] = [];
   stopped = true;
-  downloadLink: any = {};
-  player;
-
   mediaRecorder;
 
-  constructor() {
-    // navigator.mediaDevices.getUserMedia({ audio: true, video: false })
-    // .then((stream) => this.onRecSuccess(stream));
-  }
+  audioComments: BehaviorSubject<AudioComment[]> = new BehaviorSubject<AudioComment[]>(this.audioStore);
+  audioComments$: Observable<AudioComment[]> = this.audioComments.asObservable();
+
+  constructor(
+    private video: VideoService
+  ) { }
 
   init() {
     navigator.mediaDevices.getUserMedia({ audio: true, video: false })
@@ -30,30 +30,31 @@ export class AudioCommentService {
   }
 
   onRecSuccess(stream) {
-    console.log(stream);
     const options = {mimeType: 'video/webm;codecs=vp9'};
-    const recordedChunks = [];
+    let recordedChunks = [];
     this.mediaRecorder = new MediaRecorder(stream, options);
 
     this.mediaRecorder.ondataavailable = (e) => {
-      console.log('data available!');
       if (e.data.size > 0) {
         recordedChunks.push(e.data);
       }
     };
 
     this.mediaRecorder.onstop = () => {
-      this.downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
-      this.downloadLink.download = 'acetest.wav';
-      const audio = new Audio();
-      audio.src = this.downloadLink.href;
-      audio.load();
-      audio.play();
-      console.log('stop', this.downloadLink);
-    };
+      const blob = new Blob(recordedChunks);
+      const newAudio: AudioComment = {
+        id: this.audioStore.length,
+        // blob: blob,
+        timestamp: this.video.currentTime,
+        link: URL.createObjectURL(blob)
+      };
+      // preemptive push
+      this.audioStore.push(newAudio);
+      // clear chunks
+      recordedChunks = [];
 
-    // mediaRecorder.start();
-    console.log(this.mediaRecorder);
+      console.log('stop', newAudio);
+    };
   }
 
   startRecording() {
@@ -64,6 +65,23 @@ export class AudioCommentService {
   stopRecording() {
     this.mediaRecorder.stop();
     this.stopped = true;
+  }
+
+  deleteRecord(id: number) {
+    this.audioStore = this.audioStore.filter(item => id !== item.id);
+    this.audioComments.next(this.audioStore);
+  }
+
+  deleteLastRecord() {
+    this.audioStore.pop();
+    this.audioComments.next(this.audioStore);
+  }
+
+  playRecord(source: string) {
+    const audio = new Audio();
+    audio.src = source;
+    audio.load();
+    audio.play();
   }
 
 }

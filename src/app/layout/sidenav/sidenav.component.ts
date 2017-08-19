@@ -1,3 +1,4 @@
+import { AudioCommentService } from '../../shared/audio-comment/audio-comment.service';
 import { VideoService } from '../../video/video.service';
 import { BookmarkService } from '../../shared/bookmark/bookmark.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,7 +12,8 @@ export class SidenavComponent implements OnInit {
 
   constructor(
     public bookmarks: BookmarkService,
-    private video: VideoService
+    private video: VideoService,
+    public audio: AudioCommentService
   ) { }
 
   ngOnInit() {

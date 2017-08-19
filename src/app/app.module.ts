@@ -16,7 +16,7 @@ import {
   MdSnackBarModule,
   MdListModule
 } from '@angular/material';
-
+import 'hammerjs';
 // import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { VideoComponent } from './video/video.component';
@@ -26,6 +26,7 @@ import { TimelineComponent } from './timeline/timeline.component';
 import { ActionControlsComponent } from './action-controls/action-controls.component';
 import { AddBookmarkComponent } from './shared/dialog/add-bookmark/add-bookmark.component';
 import { SidenavComponent } from './layout/sidenav/sidenav.component';
+import { AddAudioCommentComponent } from './shared/dialog/add-audio-comment/add-audio-comment.component';
 
 // add all need Material modules here
 const MaterialModules = [
@@ -49,7 +50,8 @@ const MaterialModules = [
     TimelineComponent,
     ActionControlsComponent,
     AddBookmarkComponent,
-    SidenavComponent
+    SidenavComponent,
+    AddAudioCommentComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,8 @@ const MaterialModules = [
     FlexLayoutModule
   ],
   entryComponents: [
-    AddBookmarkComponent
+    AddBookmarkComponent,
+    AddAudioCommentComponent
   ],
   providers: [VideoService, BookmarkService, AudioCommentService],
   bootstrap: [AppComponent]

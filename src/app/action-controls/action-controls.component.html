@@ -1,3 +1,4 @@
 <button (click)="addBookmark()" md-fab><md-icon>bookmark</md-icon></button>
-<button (click)="startRecording()" md-fab><md-icon>record_voice_over</md-icon></button>
-<button (click)="stopRecording()" md-fab><md-icon>stop</md-icon></button>
+<!-- TODO: Single Tap should show Tooltip -->
+<button (press)="onPress($event)" (pressup)="onPressUp($event)" md-fab><md-icon>record_voice_over</md-icon></button>
+<!-- <button (click)="stopRecording()" md-fab><md-icon>stop</md-icon></button> -->
