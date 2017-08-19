@@ -4,8 +4,9 @@
     (click)="jumpToTimestamp(bookmark.timestamp)"
     *ngFor="let bookmark of bookmarks.bookmarks$ | async"
     class="clickable">
-    <md-icon md-list-icon>bookmark</md-icon>
+    <!-- <md-icon md-list-icon>bookmark</md-icon> -->
     <h4 md-line>{{bookmark.title}}</h4>
+    <button (click)="deleteBookmark(bookmark.id)" md-icon-button><md-icon md-list-icon>delete</md-icon></button>    
     <p md-line> {{bookmark.timestamp | timePipe:'mm:ss'}} </p>
   </md-list-item>
   <md-divider></md-divider>
@@ -16,7 +17,8 @@
     (click)="jumpToTimestamp(comment.timestamp)"
     *ngFor="let comment of audio.audioComments$ | async"
     class="clickable">
-    <md-icon (click)="audio.playRecord(comment.link)" md-list-icon>play</md-icon>
+    <button (click)="audio.playRecord(comment.link)" md-icon-button><md-icon md-list-icon>play_arrow</md-icon></button>
+    <button (click)="deleteRecord(comment.id)" md-icon-button><md-icon md-list-icon>delete</md-icon></button>
     <p md-line> {{comment.timestamp | timePipe:'mm:ss'}} </p>
   </md-list-item>
   <md-divider></md-divider>

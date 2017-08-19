@@ -27,8 +27,9 @@ export class BookmarkService {
     console.log(this.bookmarkStore);
   }
 
-  deleteBookmark(bookmark: Bookmark) {
-    this.bookmarkStore.filter((item) => bookmark.id !== item.id);
+  deleteBookmark(id: number) {
+    this.bookmarkStore = this.bookmarkStore.filter((item) => id !== item.id);
+    this.bookmarks.next(this.bookmarkStore);
   }
 
 }
