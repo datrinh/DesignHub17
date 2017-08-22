@@ -1,0 +1,44 @@
+// https://comet.discoveryeducation.com/resources/tokens.html
+
+// Color
+// Background Color
+$comet-background-color-default: #FFFFFF;
+$comet-background-color-light: #E2E4E9;
+$comet-background-color-dark: #2b2a2a;
+// Text Color
+$comet-text-color-primary-default: #fff;
+$comet-text-color-primary-on-light: #2b2a2a;
+$comet-text-color-primary-on-dark: $comet-text-color-primary-default;
+
+// Size
+$comet-size-default: 16px;
+$comet-size-xs: 4px;
+$comet-size-s: 6px;
+$comet-size-m: 8px;
+$comet-size-l: 32px;
+$comet-size-xl: 64px;
+// Icons
+$comet-size-icon-xs: 12px;
+$comet-size-icon-s: 16px;
+$comet-size-icon-m: 20px;
+$comet-size-icon-l: 24px;
+$comet-size-icon-xl: 40px;
+$comet-size-icon-xxl: 60px;
+
+
+// Space
+$comet-space-default: 16px;
+$comet-space-xxs: 2px;
+$comet-space-xs: 4px;
+$comet-space-s: 8px;
+$comet-space-m: 16px;
+$comet-space-l: 32px;
+$comet-space-xl: 64px;
+
+// Shadow
+$comet-shadow-block-edge-right: -1px 0px 5px 2px black;
+
+// Animation
+$comet-transition-hover: .25s ease-in-out;
+$comet-transition-fade-in: $comet-transition-hover;
+$comet-transition-fade-out: .45s ease-out;

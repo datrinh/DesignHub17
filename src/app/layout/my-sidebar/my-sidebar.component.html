@@ -1,0 +1,27 @@
+<button (click)="isBookmarksVisible = !isBookmarksVisible"><img width="30px" height="30px" src="/assets/bookmark_add.svg"/></button>
+<button (click)="isCommentsVisible = !isCommentsVisible"><img width="30px" height="30px" src="/assets/mic.svg" /></button>
+<button><img width="30px" height="30px" src="/assets/game.svg" /></button>
+<button>Zurück</button>
+<button><img width="30px" height="30px" src="/assets/settings.svg" /></button>
+
+<div class="sidebar sidebar-lvl2 bookmarks" [class.sidebar-lvl-open]="isBookmarksVisible">
+  <h2>Bookmarks</h2>
+  <md-list>
+    <md-list-item (click)="jumpToTimestamp(bookmark.timestamp)" *ngFor="let bookmark of bookmarks.bookmarks$ | async" class="clickable">
+      <h4 md-line>{{bookmark.title}}</h4>
+      <button (click)="deleteBookmark(bookmark.id)" md-icon-button><md-icon md-list-icon>delete</md-icon></button>
+      <p md-line> {{bookmark.timestamp | timePipe:'mm:ss'}} </p>
+    </md-list-item>
+  </md-list>
+</div>
+
+<div class="sidebar sidebar-lvl2 comments" [class.sidebar-lvl-open]="isCommentsVisible">
+  <h2>Kommentare</h2>
+  <md-list>
+    <md-list-item (click)="jumpToTimestamp(comment.timestamp)" *ngFor="let comment of audio.audioComments$ | async" class="clickable">
+      <button (click)="audio.playRecord(comment.link)" md-icon-button><md-icon md-list-icon>play_arrow</md-icon></button>
+      <button (click)="deleteRecord(comment.id)" md-icon-button><md-icon md-list-icon>delete</md-icon></button>
+      <p md-line> {{comment.timestamp | timePipe:'mm:ss'}} </p>
+    </md-list-item>
+  </md-list>
+</div>

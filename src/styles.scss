@@ -1,3 +1,4 @@
+@import "./variables.scss";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import url('https://fonts.googleapis.com/css?family=Roboto:500');
 
@@ -17,11 +18,11 @@ dh-root {
 }
 
 body {
-	background-color: #2b2a2a;
+	background-color: $comet-background-color-dark;
 	overflow: hidden;
 }
 
-.blur {
-	background-color: rgba(#FAFAFA, 0.3);
-	// filter: blur(10px);
-}
+// .blur {
+// 	background-color: rgba(#FAFAFA, 0.3);
+// 	// filter: blur(10px);
+// }

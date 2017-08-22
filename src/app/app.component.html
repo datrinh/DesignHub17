@@ -1,21 +1,22 @@
-<md-sidenav-container class="example-container">
-	<md-sidenav #sidenav class="example-sidenav">
-	  <dh-sidenav></dh-sidenav>
-	</md-sidenav>
+<dh-video></dh-video>
 
-	<dh-video></dh-video>
+<main>
+  <!-- <nav id="menu">
+    <button md-icon-button md-raised-button (click)="sidenav.open()"><md-icon>menu</md-icon></button>
+  </nav> -->
+  <dh-my-sidebar id="sidebar" class="sidebar"></dh-my-sidebar>
 
+<!-- <<<<<<< HEAD -->
 	<main>
 		<nav id="menu">
 			<button md-icon-button md-raised-button (click)="sidenav.open()"><md-icon>menu</md-icon></button>
 		</nav>
 		<dh-drag2wind></dh-drag2wind>
+<!-- ======= -->
+  <dh-controls id="controls"></dh-controls>
+<!-- >>>>>>> bff48ed4c11c266379f4ede8375612e2d314ee62 -->
 
-		<dh-controls id="controls"></dh-controls>
+  <dh-timeline id="timeline"></dh-timeline>
 
-		<dh-timeline id="timeline"></dh-timeline>
-
-		<dh-action-controls id="action-selection"></dh-action-controls>
-	</main>
-
-</md-sidenav-container>
+  <dh-action-controls id="action-selection"></dh-action-controls>
+</main>
