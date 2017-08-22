@@ -1,0 +1,22 @@
+@import "./../../../variables.scss";
+
+.sidebar {
+  box-shadow: $comet-shadow-block-edge-right;
+}
+
+.sidebar-lvl2 {
+  // background: linear-gradient(to right, rgba(181,231,255,1) 0%,rgba(128,211,242,1) 83%,rgba(110,201,234,1) 100%);
+  background: linear-gradient(to right, hsla(199, 100%, 35%, 1) 0%, hsla(196, 81%, 29%, 1) 83%, hsla(196, 75%, 26%, 1) 100%);
+  color: $comet-text-color-primary-on-dark;
+  height: 100%;
+  left: 100%;
+  position: absolute;
+  top: 0;
+  transform: translateX(-110%);
+  transition: $comet-transition-fade-in;
+  z-index: -1;
+}
+
+.sidebar-lvl-open {
+  transform: none;
+}

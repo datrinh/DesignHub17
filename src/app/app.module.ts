@@ -10,7 +10,7 @@ import {
   MdIconModule,
   MdProgressBarModule,
   MdSliderModule,
-  MdSidenavModule,
+  // MdSidenavModule,
   MdDialogModule,
   MdInputModule,
   MdSnackBarModule,
@@ -25,8 +25,9 @@ import { ControlsComponent } from './controls/controls.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { ActionControlsComponent } from './action-controls/action-controls.component';
 import { AddBookmarkComponent } from './shared/dialog/add-bookmark/add-bookmark.component';
-import { SidenavComponent } from './layout/sidenav/sidenav.component';
+// import { SidenavComponent } from './layout/sidenav/sidenav.component';
 import { AddAudioCommentComponent } from './shared/dialog/add-audio-comment/add-audio-comment.component';
+import { MySidebarComponent } from './layout/my-sidebar/my-sidebar.component';
 
 // add all need Material modules here
 const MaterialModules = [
@@ -34,7 +35,7 @@ const MaterialModules = [
   MdIconModule,
   MdProgressBarModule,
   MdSliderModule,
-  MdSidenavModule,
+  // MdSidenavModule,
   MdDialogModule,
   MdInputModule,
   MdSnackBarModule,
@@ -50,8 +51,9 @@ const MaterialModules = [
     TimelineComponent,
     ActionControlsComponent,
     AddBookmarkComponent,
-    SidenavComponent,
-    AddAudioCommentComponent
+    // SidenavComponent,
+    AddAudioCommentComponent,
+    MySidebarComponent
   ],
   imports: [
     BrowserModule,
