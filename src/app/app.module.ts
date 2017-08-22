@@ -14,7 +14,8 @@ import {
   MdDialogModule,
   MdInputModule,
   MdSnackBarModule,
-  MdListModule
+  MdListModule,
+  MdTooltipModule
 } from '@angular/material';
 import 'hammerjs';
 // import { AppRoutingModule } from './app-routing.module';
@@ -27,9 +28,11 @@ import { ActionControlsComponent } from './action-controls/action-controls.compo
 import { AddBookmarkComponent } from './shared/dialog/add-bookmark/add-bookmark.component';
 import { SidenavComponent } from './layout/sidenav/sidenav.component';
 import { AddAudioCommentComponent } from './shared/dialog/add-audio-comment/add-audio-comment.component';
+import { Drag2windComponent } from './drag2wind/drag2wind.component';
 
 // add all need Material modules here
 const MaterialModules = [
+  MdTooltipModule,
   MdButtonModule,
   MdIconModule,
   MdProgressBarModule,
@@ -51,20 +54,21 @@ const MaterialModules = [
     ActionControlsComponent,
     AddBookmarkComponent,
     SidenavComponent,
-    AddAudioCommentComponent
+    AddAudioCommentComponent,
+    Drag2windComponent
   ],
   imports: [
     BrowserModule,
     // AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModules,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ...MaterialModules
   ],
   entryComponents: [
     AddBookmarkComponent,
     AddAudioCommentComponent
   ],
-  providers: [VideoService, BookmarkService, AudioCommentService],
+  providers: [VideoService, BookmarkService, AudioCommentService, TimePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

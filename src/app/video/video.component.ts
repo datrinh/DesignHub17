@@ -5,10 +5,10 @@ import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/
   selector: 'dh-video',
   templateUrl: './video.component.html',
   styleUrls: ['./video.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class VideoComponent implements OnInit {
-
+  // source = 'assets/video.mp4';
   source = 'https://media.w3.org/2010/05/bunny/movie.mp4';
 
   @ViewChild('video') video;

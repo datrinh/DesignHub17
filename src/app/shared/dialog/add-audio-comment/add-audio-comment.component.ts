@@ -20,7 +20,7 @@ export class AddAudioCommentComponent implements OnInit {
   }
 
   play() {
-    this.audio.playRecord(this.audio.audioStore[this.audio.audioStore.length - 1].link);
+    this.audio.playRecord(this.audio.audioStore[this.audio.audioStore.length - 1].audio.src);
   }
 
 }

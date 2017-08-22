@@ -1,0 +1,26 @@
+$diameter: 50px;
+
+.dragbg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    // background-color: rgba(blue, 0.2);
+}
+
+.dragStart {
+    display: block;
+    // transform: translate(0, 0);
+    // width: $diameter;
+    // height: $diameter;
+    background-color: grey;
+
+    // margin-left: 250px;
+}
+
+.dragger {
+    // transform: translate(0, 0);
+    display: block;
+    // width: $diameter;
+    // height: $diameter;
+    // background-color: grey;
+} 

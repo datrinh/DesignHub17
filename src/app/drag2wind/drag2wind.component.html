@@ -1,0 +1,24 @@
+<div class="dragbg"
+  (tap)="video.playOrPause()"
+  (panstart)="onPanStart($event)"
+  (panmove)="onPan($event)"
+  (panend)="onPanEnd($event)"
+>
+  <button
+    md-fab
+    class="dragStart"
+    *ngIf="visible"
+    [ngStyle]="{'transform': 'translate(' + startX + 'px, '+ startY + 'px)'}"
+  >
+    {{ startTime | timePipe:'mm:ss'}}
+  </button>
+  <button
+    md-fab
+    class="dragger"
+    *ngIf="visible"
+    [ngStyle]="{'transform': 'translate(' + x + 'px, '+ y + 'px)'}"
+  >
+    <md-icon>{{ directionIcon }}</md-icon>
+    <!-- {{ video.currentTime$ | async | timePipe:'mm:ss' }} -->
+  </button>
+</div>

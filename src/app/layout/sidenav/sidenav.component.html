@@ -17,7 +17,7 @@
     (click)="jumpToTimestamp(comment.timestamp)"
     *ngFor="let comment of audio.audioComments$ | async"
     class="clickable">
-    <button (click)="audio.playRecord(comment.link)" md-icon-button><md-icon md-list-icon>play_arrow</md-icon></button>
+    <button (click)="audio.playRecord(comment.audio.src)" md-icon-button><md-icon md-list-icon>play_arrow</md-icon></button>
     <button (click)="deleteRecord(comment.id)" md-icon-button><md-icon md-list-icon>delete</md-icon></button>
     <p md-line> {{comment.timestamp | timePipe:'mm:ss'}} </p>
   </md-list-item>

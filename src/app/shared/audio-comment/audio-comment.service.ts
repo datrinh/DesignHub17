@@ -6,9 +6,10 @@ declare var MediaRecorder: any;
 
 export interface AudioComment {
   id: number;
-  // blob: Blob;
+  audio: HTMLAudioElement;
   timestamp: number;
-  link: string;
+  // link: string;
+  // duration: number;
 }
 
 @Injectable()
@@ -42,11 +43,14 @@ export class AudioCommentService {
 
     this.mediaRecorder.onstop = () => {
       const blob = new Blob(recordedChunks);
+      const audio = new Audio();
+      const source = URL.createObjectURL(blob);
+      audio.src = source;
       const newAudio: AudioComment = {
         id: this.audioStore.length,
-        // blob: blob,
-        timestamp: this.video.currentTime,
-        link: URL.createObjectURL(blob)
+        audio: audio,
+        timestamp: this.video.currentTime
+        // link: URL.createObjectURL(blob)
       };
       // preemptive push
       this.audioStore.push(newAudio);

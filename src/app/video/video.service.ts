@@ -1,6 +1,9 @@
 import { BehaviorSubject, Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 
+const FPS = 24;
+const AMOUNT_FRAMES_SKIPPED = 1;
+
 @Injectable()
 export class VideoService {
 
@@ -28,8 +31,10 @@ export class VideoService {
   currentTime$: Observable<number> = this.currentTimeSub.asObservable();
 
   progress$: Observable<number> = Observable
-    .combineLatest(this.currentTime$, this.duration$,
-    (current, duration) => this.calcProgress(current, duration));
+    .combineLatest(
+      this.currentTime$, this.duration$,
+      (current, duration) => this.calcProgress(current, duration)
+    );
 
 
   constructor() { }
@@ -50,12 +55,24 @@ export class VideoService {
     }
   }
 
-  // need proper checking against race condition
-  // https://stackoverflow.com/questions/36803176/how-to-prevent-the-play-request-was-interrupted-by-a-call-to-pause-error
-  private isPlaying(): boolean {
-    return this.player.currentTime > 0 && !this.player.paused && !this.player.ended && this.player.readyState > 2;
+  jumpFrames(direction: number) {
+    const multi = direction > 0 ? AMOUNT_FRAMES_SKIPPED : -AMOUNT_FRAMES_SKIPPED;
+    this.player.currentTime = this.player.currentTime + multi / FPS;
   }
 
+  // frameForward(amount: number) {
+  //   this.player.currentTime = this.player.currentTime + 1 / FPS;
+  // }
+
+  // frameBackwards(amount: number) {
+  //   this.player.currentTime = this.player.currentTime - 1 / FPS;
+  // }
+
+  // need proper checking against race condition
+  // https://stackoverflow.com/questions/36803176/how-to-prevent-the-play-request-was-interrupted-by-a-call-to-pause-error
+  isPlaying(): boolean {
+    return this.player.currentTime > 0 && !this.player.paused && !this.player.ended && this.player.readyState > 2;
+  }
 
   private calcProgress(current: number, duration: number): number {
     if (current === 0 && duration === 0) {

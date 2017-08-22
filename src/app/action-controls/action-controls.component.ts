@@ -1,10 +1,17 @@
+import { TimePipe } from '../shared/pipes/time-pipe.pipe';
 import { AddAudioCommentComponent } from '../shared/dialog/add-audio-comment/add-audio-comment.component';
 import { AudioCommentService } from '../shared/audio-comment/audio-comment.service';
 import { AddBookmarkComponent } from '../shared/dialog/add-bookmark/add-bookmark.component';
 import { VideoService } from '../video/video.service';
 import { BookmarkService } from '../shared/bookmark/bookmark.service';
-import { Component, OnInit } from '@angular/core';
-import { MdDialog, MdSnackBar } from '@angular/material';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MdDialog, MdSnackBar, MdTooltip } from '@angular/material';
+
+export enum ActionMode {
+  bookmark = 'bookmark',
+  audio = 'audio',
+  vibration = 'vibration'
+}
 
 @Component({
   selector: 'dh-action-controls',
@@ -13,18 +20,26 @@ import { MdDialog, MdSnackBar } from '@angular/material';
 })
 export class ActionControlsComponent implements OnInit {
 
-  mode = 'bookmark';
+  mode: ActionMode = ActionMode.bookmark;
+  recordIcon = 'fiber_manual_record';
+  tooltipLabel = '';
+  @ViewChild('tooltip') tooltip: MdTooltip;
+  // isPressing = false;
+  pressInterval;
+  audioDuration = 0;
 
   constructor(
     private bookmark: BookmarkService,
     private video: VideoService,
     private audio: AudioCommentService,
     private dialog: MdDialog,
-    private snackbar: MdSnackBar
+    private snackbar: MdSnackBar,
+    private timePipe: TimePipe
   ) { }
 
   ngOnInit() {
     this.audio.init();
+    this.tooltip.hide();
   }
 
   addBookmark() {
@@ -53,13 +68,21 @@ export class ActionControlsComponent implements OnInit {
   }
 
   onPress(e) {
-    this.startRecording();
     console.log('recording...:', e);
+    this.video.player.pause();
+    this.startRecording();
+    this.recordIcon = 'fiber_smart_record';
+    this.showTooltip();
   }
 
   onPressUp(e) {
     console.log('stop recording...');
     this.stopRecording();
+    // change action button
+    this.recordIcon = 'fiber_manual_record';
+
+    this.hideTooltip();
+    // show dialog
     const audioCommentDialog = this.dialog.open(AddAudioCommentComponent, {
       data: {
         timestamp: this.video.currentTime
@@ -68,12 +91,38 @@ export class ActionControlsComponent implements OnInit {
     audioCommentDialog.afterClosed().subscribe(res => {
       if (res) {
         // already preemptively saved
-        this.snackbar.open(`Kommentar wurde gespeichert.`, null, {
+        this.snackbar.open('Kommentar wurde gespeichert.', null, {
           duration: 2000
         });
       } else {
         this.audio.deleteLastRecord();
       }
     });
+  }
+
+  showTooltip() {
+    console.log('showing Tooltip');
+    this.audioDuration = 0;
+    // this.isPressing = true;
+    this.tooltip.show();
+    this.pressInterval = window.setInterval(() => {
+      // if (this.isPressing) {
+        this.tooltipLabel = this.timePipe.transform(this.audioDuration, 'mm:ss');
+        this.audioDuration = this.audioDuration + 1;
+      // }
+      console.log(this.audioDuration);
+    }, 1000);
+  }
+
+  hideTooltip() {
+    console.log('Hiding Tooltip');
+    this.tooltip.hide();
+    // this.isPressing = false;
+    window.clearInterval(this.pressInterval);
+    // this.tooltipLabel = '';
+  }
+
+  onTap() {
+    this.tooltipLabel = 'Halten zum Aufnehmen';
   }
 }

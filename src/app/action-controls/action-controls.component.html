@@ -1,4 +1,11 @@
 <button (click)="addBookmark()" md-fab><md-icon>bookmark</md-icon></button>
 <!-- TODO: Single Tap should show Tooltip -->
-<button (press)="onPress($event)" (pressup)="onPressUp($event)" md-fab><md-icon>record_voice_over</md-icon></button>
+<!-- TODO: BUG: onPressUp doesnt fire when moving a little after press since pan event fire instead -->
+<button 
+    (press)="onPress($event)"
+    (pressup)="onPressUp($event)"
+    (tap)="onTap()"
+    #tooltip="mdTooltip"
+    [mdTooltip]="tooltipLabel"
+    md-fab><md-icon>{{ recordIcon }}</md-icon></button>
 <!-- <button (click)="stopRecording()" md-fab><md-icon>stop</md-icon></button> -->
