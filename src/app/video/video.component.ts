@@ -8,8 +8,8 @@ import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class VideoComponent implements OnInit {
-  // source = 'assets/video.mp4';
-  source = 'https://media.w3.org/2010/05/bunny/movie.mp4';
+  source = 'assets/video.mp4';
+  // source = 'https://media.w3.org/2010/05/bunny/movie.mp4';
 
   @ViewChild('video') video;
 

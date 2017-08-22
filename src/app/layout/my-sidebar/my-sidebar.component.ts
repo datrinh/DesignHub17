@@ -10,7 +10,8 @@ import { BookmarkService } from '../../shared/bookmark/bookmark.service';
   styleUrls: ['./my-sidebar.component.scss']
 })
 export class MySidebarComponent implements OnInit {
-  isBookmarksVisible: false;
+  isBookmarksVisible = false;
+  isCommentsVisible = false;
 
   constructor(
     public bookmarks: BookmarkService,
