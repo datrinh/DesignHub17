@@ -16,7 +16,7 @@ dh-video {
 main {
 	bottom: 0;
 	left: 0;
-	
+
 	position: absolute;
 	right: 0;
   top: 0;
@@ -29,14 +29,10 @@ main {
 
 #menu,
 .sidebar {
-  align-items: center;
-  // background: linear-gradient(to right, rgba(181,231,255,1) 0%,rgba(128,211,242,1) 83%,rgba(110,201,234,1) 100%); // light
-  background: linear-gradient(to right, hsla(199, 100%, 35%, 1) 0%, hsla(196, 81%, 29%, 1) 83%, hsla(196, 75%, 26%, 1) 100%); // darker
-  box-shadow: $comet-shadow-block-edge-right;
+  align-items: stretch;
   display: flex;
-  flex-flow: column;
+  // flex-flow: column;
   grid-area: 1 / 1 / -1 / 1;
-  padding-top: $comet-space-l;
   position: relative;
 }
 
@@ -53,14 +49,15 @@ main {
 
 #action-selection {
 	// background-color: rgba(213, 208, 173, 0.5);
-	grid-area: -4 / -4 / -2 / -2;
+  grid-area: -4 / -4 / -2 / -2;
+
+  // display: grid;
+  // grid: repeat(2, 1fr) / repeat(2, 1fr);
+  // grid-gap: $comet-space-s;
+  position: relative;
 }
 
 dh-drag2wind {
-	// align-self: end;
-	// background-color: rgba(209, 166, 139, 0.5);
-	// background-color: pink;
-	grid-area: 1 / 1 / -1 / -1;
-	// width: 100%;
-	// height: 100%;
+  grid-area: 1 / 1 / -1 / -1;
+  z-index: -1;
 }

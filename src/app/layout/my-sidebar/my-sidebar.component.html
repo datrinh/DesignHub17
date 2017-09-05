@@ -1,11 +1,31 @@
-<button (click)="isBookmarksVisible = !isBookmarksVisible"><img width="30px" height="30px" src="/assets/bookmark_add.svg"/></button>
-<button (click)="isCommentsVisible = !isCommentsVisible"><img width="30px" height="30px" src="/assets/mic.svg" /></button>
-<button><img width="30px" height="30px" src="/assets/game.svg" /></button>
-<button>Zurück</button>
-<button><img width="30px" height="30px" src="/assets/settings.svg" /></button>
+<!-- <md-button-toggle-group class="sidebar sidebar-lvl1" #sidebarSelection="mdButtonToggleGroup" vertical (change)="sidebarOnChange(sidebarSelection.value)">
+  <md-button-toggle value="bookmark">
+    <md-icon>bookmark</md-icon>
+  </md-button-toggle>
+  <md-button-toggle value="comment">
+    <md-icon>mic</md-icon>
+  </md-button-toggle>
+  <md-button-toggle value="vibration">
+    <md-icon>vibration</md-icon>
+  </md-button-toggle>
+  <md-button-toggle value="back">
+    <md-icon>backspace</md-icon>
+  </md-button-toggle>
+  <md-button-toggle value="settings">
+    <md-icon>settings</md-icon>
+  </md-button-toggle>
+</md-button-toggle-group> -->
+
+<div class="sidebar sidebar-lvl1">
+  <button md-icon-button md-raised-button (click)="sidebarOnChange('back')"><md-icon>backspace</md-icon></button>
+  <button md-icon-button md-raised-button (click)="sidebarOnChange('bookmark')"><md-icon>bookmark</md-icon></button>
+  <button md-icon-button md-raised-button (click)="sidebarOnChange('comment')"><md-icon>mic</md-icon></button>
+  <button md-icon-button md-raised-button (click)="sidebarOnChange('vibration')"><md-icon>vibration</md-icon></button>
+  <button md-icon-button md-raised-button (click)="sidebarOnChange('settings')"><md-icon>settings</md-icon></button>
+</div>
 
 <div class="sidebar sidebar-lvl2 bookmarks" [class.sidebar-lvl-open]="isBookmarksVisible">
-  <h2>Bookmarks</h2>
+  <md-card-title>Lesezeichen</md-card-title>
   <md-list>
     <md-list-item (click)="jumpToTimestamp(bookmark.timestamp)" *ngFor="let bookmark of bookmarks.bookmarks$ | async" class="clickable">
       <h4 md-line>{{bookmark.title}}</h4>
@@ -16,7 +36,7 @@
 </div>
 
 <div class="sidebar sidebar-lvl2 comments" [class.sidebar-lvl-open]="isCommentsVisible">
-  <h2>Kommentare</h2>
+  <md-card-title>Kommentare</md-card-title>
   <md-list>
     <md-list-item (click)="jumpToTimestamp(comment.timestamp)" *ngFor="let comment of audio.audioComments$ | async" class="clickable">
       <button (click)="audio.playRecord(comment.link)" md-icon-button><md-icon md-list-icon>play_arrow</md-icon></button>
@@ -24,4 +44,20 @@
       <p md-line> {{comment.timestamp | timePipe:'mm:ss'}} </p>
     </md-list-item>
   </md-list>
+</div>
+
+<div class="sidebar sidebar-lvl2 vibrations" [class.sidebar-lvl-open]="isVibrationsVisible">
+  <md-card-title>Vibrationen</md-card-title>
+  <md-list>
+    <md-list-item (click)="jumpToTimestamp(comment.timestamp)" *ngFor="let comment of audio.audioComments$ | async" class="clickable">
+      <button (click)="audio.playRecord(comment.link)" md-icon-button><md-icon md-list-icon>play_arrow</md-icon></button>
+      <button (click)="deleteRecord(comment.id)" md-icon-button><md-icon md-list-icon>delete</md-icon></button>
+      <p md-line> {{comment.timestamp | timePipe:'mm:ss'}} </p>
+    </md-list-item>
+  </md-list>
+</div>
+
+<div class="sidebar sidebar-lvl2 settings" [class.sidebar-lvl-open]="isSettingsVisible">
+  <md-card-title>Einstellungen</md-card-title>
+
 </div>

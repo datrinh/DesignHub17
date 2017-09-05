@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MdButtonModule,
+  MdButtonToggleModule,
   MdIconModule,
   MdProgressBarModule,
   MdSliderModule,
@@ -26,7 +27,7 @@ import { ControlsComponent } from './controls/controls.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { ActionControlsComponent } from './action-controls/action-controls.component';
 import { AddBookmarkComponent } from './shared/dialog/add-bookmark/add-bookmark.component';
-// import { SidenavComponent } from './layout/sidenav/sidenav.component';
+import { SidenavComponent } from './layout/sidenav/sidenav.component';
 import { AddAudioCommentComponent } from './shared/dialog/add-audio-comment/add-audio-comment.component';
 import { Drag2windComponent } from './drag2wind/drag2wind.component';
 import { MySidebarComponent } from './layout/my-sidebar/my-sidebar.component';
@@ -35,6 +36,7 @@ import { MySidebarComponent } from './layout/my-sidebar/my-sidebar.component';
 const MaterialModules = [
   MdTooltipModule,
   MdButtonModule,
+  MdButtonToggleModule,
   MdIconModule,
   MdProgressBarModule,
   MdSliderModule,
@@ -55,7 +57,7 @@ const MaterialModules = [
     ActionControlsComponent,
     AddBookmarkComponent,
     Drag2windComponent,
-    // SidenavComponent,
+    SidenavComponent,
     AddAudioCommentComponent,
     MySidebarComponent
   ],
