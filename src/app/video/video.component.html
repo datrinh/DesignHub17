@@ -4,6 +4,7 @@
   (click)="videoService.playOrPause()"
   (timeupdate)="onTimeUpdate($event)"
   (durationchange)="onDurationChange($event)"
+  preload="auto"
   #video id="video">
   <source [src]="source" type="video/mp4" />
 </video>

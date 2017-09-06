@@ -1,7 +1,7 @@
 import { BehaviorSubject, Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 
-const FPS = 24;
+const FPS = 60;
 const AMOUNT_FRAMES_SKIPPED = 1;
 
 @Injectable()
