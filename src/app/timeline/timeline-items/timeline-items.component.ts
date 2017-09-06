@@ -22,14 +22,13 @@ export class TimelineItemsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.items$ = Observable.merge(
+    this.items$ = Observable.combineLatest(
       this.bookmark.bookmarks$,
       this.audio.audioComments$
-    ).map((items: any) => items.map(item => {
-      console.log(item);
-      return {
-        timestamp: item.timestamp
-      };
-    }));
+    ).map(([bookmarks, audio]) => [...bookmarks, ...audio].map(item => {
+        return {
+          timestamp: item.timestamp
+        };
+      }));
   }
 }

@@ -12,7 +12,7 @@ export class BookmarkService {
 
   bookmarkStore: Bookmark[] = [];
 
-  bookmarks: BehaviorSubject<Bookmark[]> = new BehaviorSubject<Bookmark[]>(this.bookmarkStore);
+  private bookmarks: BehaviorSubject<Bookmark[]> = new BehaviorSubject<Bookmark[]>(this.bookmarkStore);
   bookmarks$: Observable<Bookmark[]> = this.bookmarks.asObservable();
 
   constructor() { }
