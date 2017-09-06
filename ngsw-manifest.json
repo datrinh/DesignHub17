@@ -1,0 +1,22 @@
+{
+    "external": {
+        "urls": [
+            {"url": "https://fonts.googleapis.com/icon?family=Material+Icons"},
+            {"url": "https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono"}
+        ]
+    },
+    "static.ignore": [
+        "\\.js\\.map$"
+    ],
+    "static.versioned": [
+        "\\.[0-9a-z]{20}\\."
+    ],
+    "routing": {
+        "index": "/index.html",
+        "routes": {
+            "/": {
+                "prefix": false
+            }
+        }
+    }
+}
