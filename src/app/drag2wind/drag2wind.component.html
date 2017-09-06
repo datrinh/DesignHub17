@@ -16,7 +16,7 @@
     md-fab
     class="dragger"
     *ngIf="visible"
-    [ngStyle]="{'transform': 'translate(' + x + 'px, '+ y + 'px)'}"
+    [ngStyle]="{'transform': 'translate(' + dragX + 'px, '+ dragY + 'px)'}"
   >
     <md-icon>{{ directionIcon }}</md-icon>
     <!-- {{ video.currentTime$ | async | timePipe:'mm:ss' }} -->

@@ -12,8 +12,8 @@ export class Drag2windComponent implements OnInit {
   visible = false;
   directionIcon: string;
 
-  x = 0;
-  y = 0;
+  dragX = 0;
+  dragY = 0;
 
   startX = 0;
   startY = 0;
@@ -33,11 +33,11 @@ export class Drag2windComponent implements OnInit {
     this.startTime = this.video.currentTime;
   }
 
-  onPan(e: any) {
+  onPan(e) {
     this.visible = true;
-    this.x = this.startX + e.deltaX;
+    this.dragX = this.startX + e.deltaX;
     // diameter offset
-    this.y = this.startY + e.deltaY - DIAMETER;
+    this.dragY = this.startY + e.deltaY - DIAMETER;
 
     if (e.additionalEvent === 'panleft') {
       this.directionIcon = 'fast_rewind';
@@ -46,6 +46,7 @@ export class Drag2windComponent implements OnInit {
       this.directionIcon = 'fast_forward';
       this.video.jumpFrames(1);
     } else {
+      // TODO: How to handle 'panup' or 'pandown'
       // this.video.jumpFrames(e.deltaX);
     }
   }

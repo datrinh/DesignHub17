@@ -56,6 +56,7 @@ export class VideoService {
   }
 
   jumpFrames(direction: number) {
+    // could alter multi based on amount of direction
     const multi = direction > 0 ? AMOUNT_FRAMES_SKIPPED : -AMOUNT_FRAMES_SKIPPED;
     this.player.currentTime = this.player.currentTime + multi / FPS;
   }
