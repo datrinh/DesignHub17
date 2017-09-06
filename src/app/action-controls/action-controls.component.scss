@@ -1,0 +1,38 @@
+@import "./../../variables.scss";
+
+#actionSelectionBookmark {
+  // align-self: end;
+  // grid-area: 1 / 1;
+  // justify-self: end;
+  position: absolute;
+  top: 20%;
+  left: 28%;
+}
+
+#actionSelectionComment {
+  // align-self: end;
+  // grid-area: 1 / 2;
+  // justify-self: center;
+  position: absolute;
+  top: 10%;
+  left: 56%;
+}
+
+#actionSelectionVibration {
+  // align-self: center;
+  // grid-area: 2 / 1;
+  // justify-self: end;
+  position: absolute;
+  bottom: 15%;
+  left: 20%;
+}
+
+#actionSelection {
+  // align-self: center;
+  // grid-area: 2 / 2;
+  height: 85px;
+  width: 85px;
+  position: absolute;
+  top: 51%;
+  left: 51%;
+}

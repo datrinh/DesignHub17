@@ -1,7 +1,8 @@
-<button (click)="addBookmark()" md-fab><md-icon>bookmark</md-icon></button>
+<button id="actionSelectionBookmark" class="actionSelection" (click)="addBookmark()" md-fab><md-icon>bookmark</md-icon></button>
 <!-- TODO: Single Tap should show Tooltip -->
 <!-- TODO: BUG: onPressUp doesnt fire when moving a little after press since pan event fire instead -->
-<button 
+<button
+    id="actionSelectionComment" class="actionSelection"
     (press)="onPress($event)"
     (pressup)="onPressUp($event)"
     (tap)="onTap()"
@@ -9,3 +10,7 @@
     [mdTooltip]="tooltipLabel"
     md-fab><md-icon>{{ recordIcon }}</md-icon></button>
 <!-- <button (click)="stopRecording()" md-fab><md-icon>stop</md-icon></button> -->
+
+<button id="actionSelectionVibration" class="actionSelection" md-fab><md-icon>vibration</md-icon></button>
+
+<button id="actionSelection" class="actionSelection" md-fab><md-icon>bookmark</md-icon></button>

@@ -1,12 +1,22 @@
 @import "./../../../variables.scss";
 
 .sidebar {
+  background: linear-gradient(to right, rgba(181,231,255,1) 0%,rgba(128,211,242,1) 83%,rgba(110,201,234,1) 100%);
+  // background: linear-gradient(to right, hsla(199, 100%, 35%, 1) 0%, hsla(196, 81%, 29%, 1) 83%, hsla(196, 75%, 26%, 1) 100%);
+  box-sizing: border-box;
   box-shadow: $comet-shadow-block-edge-right;
+  padding: $comet-space-l $comet-space-s $comet-space-l;
+}
+
+.sidebar-lvl1 {
+  align-items: center;
+  display: flex;
+  flex-basis: 100%;
+  flex-direction: column;
+  padding: $comet-space-l 0 $comet-space-l;
 }
 
 .sidebar-lvl2 {
-  // background: linear-gradient(to right, rgba(181,231,255,1) 0%,rgba(128,211,242,1) 83%,rgba(110,201,234,1) 100%);
-  background: linear-gradient(to right, hsla(199, 100%, 35%, 1) 0%, hsla(196, 81%, 29%, 1) 83%, hsla(196, 75%, 26%, 1) 100%);
   color: $comet-text-color-primary-on-dark;
   height: 100%;
   left: 100%;
@@ -14,9 +24,15 @@
   top: 0;
   transform: translateX(-110%);
   transition: $comet-transition-fade-in;
+  width: 12em;
   z-index: -1;
 }
 
 .sidebar-lvl-open {
   transform: none;
+}
+
+.sidebar-lvl1 > .mat-button-toggle + .mat-button-toggle,
+.sidebar-lvl1 > .mat-icon-button + .mat-icon-button {
+  margin-top: $comet-space-default;
 }
