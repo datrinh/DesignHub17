@@ -1,0 +1,21 @@
+{
+  "static": {
+    "urls": {
+      "DesignHub17/polyfills.f77454f386e1728adda2.bundle.js": "3d4f12826bbd9ad3b68fe171efb7343d5aaa74c2",
+      "DesignHub17/main.bd71f17ec41f28ee614c.bundle.js": "aabaa5832c5f4dbf049f912d30c604dfda211def",
+      "DesignHub17/sw-register.6819cd2c5fa25470ecf2.bundle.js": "50d549edfbd188ed199d8d0b079afa593202e3ea",
+      "DesignHub17/vendor.ad7181eec46007c54920.bundle.js": "e99a9ea44a742f211f44baaf9d3841d8e594f4f8",
+      "DesignHub17/inline.3f6494e2df19ff3d0bae.bundle.js": "d7445f0d2f3054ca427f8cf11a37ee9379bfcba3",
+      "DesignHub17/styles.61a36e62f1f95e3468d9.bundle.css": "09942a3498286b0e648022fa4af71b7a66246ab5",
+      "DesignHub17/assets/.DS_Store": "df2fbeb1400acda0909a32c1cf6bf492f1121e07",
+      "DesignHub17/assets/bookmark_add.svg": "c5b75f110d12492b962fb4368b6d6cb00b385c44",
+      "DesignHub17/assets/game.svg": "2899cbef85bfd0df2a10af66ebf704793aa3a38c",
+      "DesignHub17/assets/mic.svg": "cbbcef0cc5a7ee33f09ffc7e7b0ff10102bd4033",
+      "DesignHub17/assets/settings.svg": "fafbfeb78503bb56ebea003d90f13a1e77d2dccd",
+      "DesignHub17/assets/video.mp4": "fd15fdc0c7c18e6ef6910076b6926eb6e751afbc",
+      "DesignHub17/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
+      "DesignHub17/index.html": "351b9ebdf270f3e8ac28bd1b219fe03897816f9c"
+    },
+    "_generatedFromWebpack": true
+  }
+}

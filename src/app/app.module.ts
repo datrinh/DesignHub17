@@ -31,6 +31,7 @@ import { SidenavComponent } from './layout/sidenav/sidenav.component';
 import { AddAudioCommentComponent } from './shared/dialog/add-audio-comment/add-audio-comment.component';
 import { Drag2windComponent } from './drag2wind/drag2wind.component';
 import { MySidebarComponent } from './layout/my-sidebar/my-sidebar.component';
+import { TimelineItemsComponent } from './timeline/timeline-items/timeline-items.component';
 
 // add all need Material modules here
 const MaterialModules = [
@@ -59,7 +60,8 @@ const MaterialModules = [
     Drag2windComponent,
     SidenavComponent,
     AddAudioCommentComponent,
-    MySidebarComponent
+    MySidebarComponent,
+    TimelineItemsComponent
   ],
   imports: [
     BrowserModule,

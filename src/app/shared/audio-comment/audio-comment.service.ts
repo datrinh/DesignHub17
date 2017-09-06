@@ -54,6 +54,7 @@ export class AudioCommentService {
       };
       // preemptive push
       this.audioStore.push(newAudio);
+      this.audioComments.next(this.audioStore);
       // clear chunks
       recordedChunks = [];
 
