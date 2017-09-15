@@ -75,11 +75,11 @@ export class VideoService {
     return this.player.currentTime > 0 && !this.player.paused && !this.player.ended && this.player.readyState > 2;
   }
 
-  private calcProgress(current: number, duration: number): number {
+  calcProgress(current: number, duration: number): number {
     if (current === 0 && duration === 0) {
       return 0;
     } else {
-      return this.currentTime / this.duration * 100;
+      return current / duration * 100;
     }
   }
 

@@ -1,5 +1,3 @@
-<div class="wrapper">
-  <ng-container *ngFor="let item of items$ | async">
-    <md-icon>heart {{item}}</md-icon>
-  </ng-container>
-</div>
+<ng-container *ngFor="let item of items$ | async">
+  <div class="item" [ngStyle]="{'transform': 'translate(' + item.position + '%)'}"><md-icon>bookmark</md-icon></div>
+</ng-container>

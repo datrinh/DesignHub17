@@ -24,7 +24,7 @@ export class BookmarkService {
   createBookmark(timestamp: number, title: string) {
     this.bookmarkStore.push({id: this.bookmarkStore.length, timestamp: timestamp, title: title});
     this.bookmarks.next(this.bookmarkStore);
-    console.log(this.bookmarkStore);
+    // console.log(this.bookmarkStore);
   }
 
   deleteBookmark(id: number) {
