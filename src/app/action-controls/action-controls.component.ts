@@ -19,7 +19,7 @@ export enum ActionMode {
   styleUrls: ['./action-controls.component.scss']
 })
 export class ActionControlsComponent implements OnInit {
-  mode: ActionMode = ActionMode.bookmark;
+  mode: string = ActionMode.bookmark;
   recordIcon = 'fiber_manual_record';
   tooltipLabel = '';
   @ViewChild('tooltip') tooltip: MdTooltip;
@@ -41,7 +41,7 @@ export class ActionControlsComponent implements OnInit {
     // this.tooltip.hide();
   }
 
-  setMode(mode: ActionMode) {
+  setMode(mode: string) {
     this.mode = mode;
   }
 
