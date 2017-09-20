@@ -18,7 +18,7 @@
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "dh",
-      "serviceWorker": true,
+      "serviceWorker": false,
       "styles": [
         "styles.scss"
       ],
