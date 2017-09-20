@@ -19,7 +19,6 @@ export enum ActionMode {
   styleUrls: ['./action-controls.component.scss']
 })
 export class ActionControlsComponent implements OnInit {
-
   mode: ActionMode = ActionMode.bookmark;
   recordIcon = 'fiber_manual_record';
   tooltipLabel = '';
@@ -39,7 +38,11 @@ export class ActionControlsComponent implements OnInit {
 
   ngOnInit() {
     this.audio.init();
-    this.tooltip.hide();
+    // this.tooltip.hide();
+  }
+
+  setMode(mode: ActionMode) {
+    this.mode = mode;
   }
 
   addBookmark() {
@@ -81,7 +84,7 @@ export class ActionControlsComponent implements OnInit {
     // change action button
     this.recordIcon = 'fiber_manual_record';
 
-    this.hideTooltip();
+    // this.hideTooltip();
     // show dialog
     const audioCommentDialog = this.dialog.open(AddAudioCommentComponent, {
       data: {

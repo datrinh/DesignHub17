@@ -1,16 +1,56 @@
-<button id="actionSelectionBookmark" class="actionSelection" (click)="addBookmark()" md-fab><md-icon>bookmark</md-icon></button>
+<!-- TODO: Icon Morphing or other Animation -->
 <!-- TODO: Single Tap should show Tooltip -->
 <!-- TODO: BUG: onPressUp doesnt fire when moving a little after press since pan event fire instead -->
+
+<!-- Mode Switch Buttons -->
 <button
-    id="actionSelectionComment" class="actionSelection"
+    (click)="setMode('audio')"
+    [ngStyle]=""
+    id="actionSelectionComment"
+    class="actionSelection"
+    md-mini-fab><md-icon>mic</md-icon>
+</button>
+
+<button
+ (click)="setMode('bookmark')"
+ id="actionSelectionBookmark"
+ class="actionSelection"
+ md-mini-fab><md-icon>bookmark</md-icon>
+</button>
+    
+<button
+    (click)="setMode('vibration')"
+    id="actionSelectionVibration"
+    class="actionSelection"
+    md-mini-fab><md-icon>vibration</md-icon>
+</button>
+
+<!-- Action Button -->
+<button
+    *ngIf="mode === 'audio'"
+    class="actionSelection"
     (press)="onPress($event)"
     (pressup)="onPressUp($event)"
     (tap)="onTap()"
     #tooltip="mdTooltip"
     [mdTooltip]="tooltipLabel"
-    md-fab><md-icon>{{ recordIcon }}</md-icon></button>
-<!-- <button (click)="stopRecording()" md-fab><md-icon>stop</md-icon></button> -->
+    id="actionSelection"
+    class="actionSelection"
+    md-fab><md-icon>{{ recordIcon }}</md-icon>
+</button>
 
-<button id="actionSelectionVibration" class="actionSelection" md-fab><md-icon>vibration</md-icon></button>
+<button
+    (click)="addBookmark()"
+    *ngIf="mode === 'bookmark'"
+    id="actionSelection"
+    class="actionSelection"
+    md-fab><md-icon>bookmark</md-icon>
+</button>
 
-<button id="actionSelection" class="actionSelection" md-fab><md-icon>bookmark</md-icon></button>
+<button
+    *ngIf="mode === 'vibration'"
+    id="actionSelection"
+    class="actionSelection"
+    [mdTooltip]="'WIP'"
+    md-fab><md-icon>vibration</md-icon>
+</button>
