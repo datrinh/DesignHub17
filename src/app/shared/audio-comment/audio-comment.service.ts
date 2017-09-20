@@ -8,6 +8,7 @@ export interface AudioComment {
   id: number;
   audio: HTMLAudioElement;
   timestamp: number;
+  type: string;
   // link: string;
   // duration: number;
 }
@@ -49,7 +50,8 @@ export class AudioCommentService {
       const newAudio: AudioComment = {
         id: this.audioStore.length,
         audio: audio,
-        timestamp: this.video.currentTime
+        timestamp: this.video.currentTime,
+        type: 'audio'
         // link: URL.createObjectURL(blob)
       };
       // preemptive push

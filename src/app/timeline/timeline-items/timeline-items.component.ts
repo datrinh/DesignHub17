@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 interface TimelineItem {
   timestamp: number;
   position: number;
+  icon: string;
 }
 
 @Component({
@@ -15,6 +16,7 @@ interface TimelineItem {
   styleUrls: ['./timeline-items.component.scss']
 })
 export class TimelineItemsComponent implements OnInit {
+  offset = 0.955;
 
   items$: Observable<TimelineItem[]>;
 
@@ -30,11 +32,12 @@ export class TimelineItemsComponent implements OnInit {
       this.audio.audioComments$
     ).map(([bookmarks, audio]) => [...bookmarks, ...audio].map(item => {
         const position = this.video.calcProgress(item.timestamp, this.video.duration);
-        console.log(position);
+        // TODO: more types
+        const icon = item.type === 'bookmark' ? 'bookmark' : 'mic';
         return {
           timestamp: item.timestamp,
-          // position is the same for all items, while timestamp differs
-          position: position
+          position: position,
+          icon: icon
         };
       }))
       .do((res) => console.log(res));

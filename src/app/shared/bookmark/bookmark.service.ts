@@ -5,6 +5,7 @@ export interface Bookmark {
   id: number;
   timestamp: number;
   title: string;
+  type: string;
 }
 
 @Injectable()
@@ -22,7 +23,12 @@ export class BookmarkService {
   }
 
   createBookmark(timestamp: number, title: string) {
-    this.bookmarkStore.push({id: this.bookmarkStore.length, timestamp: timestamp, title: title});
+    this.bookmarkStore.push({
+      id: this.bookmarkStore.length,
+      timestamp: timestamp,
+      title: title,
+      type: 'bookmark'
+    });
     this.bookmarks.next(this.bookmarkStore);
     // console.log(this.bookmarkStore);
   }

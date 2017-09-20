@@ -1,9 +1,12 @@
-<dh-timeline-items></dh-timeline-items>
-<md-slider
-  (input)="setCurrentTime($event)" 
-  [min]="0"
-  [max]="videoService.duration$ | async"
-  [step]="0.01"
-  [value]="videoService.currentTime$ | async">
-</md-slider>
-<span>{{ videoService.currentTime$ | async | timePipe:'mm:ss' }} | {{ videoService.duration$ | async | timePipe:'mm:ss' }}</span>
+<div class="wrapper">
+  <dh-timeline-items></dh-timeline-items>
+  <md-slider
+    (input)="setCurrentTime($event)" 
+    [min]="0"
+    [max]="videoService.duration$ | async"
+    [step]="0.01"
+    [value]="videoService.currentTime$ | async">
+  </md-slider>
+  <span>{{ videoService.currentTime$ | async | timePipe:'mm:ss' }} | {{ videoService.duration$ | async | timePipe:'mm:ss' }}</span>
+  
+</div>
