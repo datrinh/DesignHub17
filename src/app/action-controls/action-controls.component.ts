@@ -13,6 +13,8 @@ export enum ActionMode {
   vibration = 'vibration'
 }
 
+const TOOLTIP_LABEL = 'Halten zum Aufnehmen';
+
 @Component({
   selector: 'dh-action-controls',
   templateUrl: './action-controls.component.html',
@@ -21,7 +23,7 @@ export enum ActionMode {
 export class ActionControlsComponent implements OnInit {
   mode: string = ActionMode.bookmark;
   recordIcon = 'fiber_manual_record';
-  tooltipLabel = '';
+  tooltipLabel = TOOLTIP_LABEL;
   @ViewChild('tooltip') tooltip: MdTooltip;
   // isPressing = false;
   pressInterval;
@@ -84,7 +86,7 @@ export class ActionControlsComponent implements OnInit {
     // change action button
     this.recordIcon = 'fiber_manual_record';
 
-    // this.hideTooltip();
+    this.hideTooltip();
     // show dialog
     const audioCommentDialog = this.dialog.open(AddAudioCommentComponent, {
       data: {
@@ -113,19 +115,19 @@ export class ActionControlsComponent implements OnInit {
         this.tooltipLabel = this.timePipe.transform(this.audioDuration, 'mm:ss');
         this.audioDuration = this.audioDuration + 1;
       // }
-      console.log(this.audioDuration);
+      console.log('recording', this.audioDuration);
     }, 1000);
   }
 
   hideTooltip() {
     console.log('Hiding Tooltip');
     this.tooltip.hide();
-    // this.isPressing = false;
     window.clearInterval(this.pressInterval);
-    // this.tooltipLabel = '';
+    this.tooltipLabel = TOOLTIP_LABEL;
   }
 
   onTap() {
-    this.tooltipLabel = 'Halten zum Aufnehmen';
+    // this.tooltip.show();
+    // this.tooltipLabel = 'Halten zum Aufnehmen';
   }
 }
