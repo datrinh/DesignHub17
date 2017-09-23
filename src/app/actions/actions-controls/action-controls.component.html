@@ -5,21 +5,23 @@
 <!-- Mode Switch Buttons -->
 <button
     (click)="setMode('audio')"
-    [ngStyle]=""
+    [ngClass]="{'inactive': !(mode === 'audio')}"
     id="actionSelectionComment"
     class="actionSelection"
     md-mini-fab><md-icon>mic</md-icon>
 </button>
 
 <button
- (click)="setMode('bookmark')"
- id="actionSelectionBookmark"
- class="actionSelection"
- md-mini-fab><md-icon>bookmark</md-icon>
+    (click)="setMode('bookmark')"
+    [ngClass]="{'inactive': !(mode === 'bookmark')}"
+    id="actionSelectionBookmark"
+    class="actionSelection"
+    md-mini-fab><md-icon>bookmark</md-icon>
 </button>
     
 <button
     (click)="setMode('vibration')"
+    [ngClass]="{'inactive': !(mode === 'vibration')}"
     id="actionSelectionVibration"
     class="actionSelection"
     md-mini-fab><md-icon>vibration</md-icon>

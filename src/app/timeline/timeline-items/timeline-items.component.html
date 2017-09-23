@@ -1,6 +1,6 @@
 <div class="wrapper">
   <ng-container *ngFor="let item of items$ | async">
     <!-- <div class="item" [ngStyle]="{'transform': 'translate(' + item.position + '%)'}"><md-icon>bookmark</md-icon></div> -->
-    <div class="item" [ngStyle]="{'left.%': item.position }"><md-icon>{{item.icon}}</md-icon></div>
+    <div class="item" [ngStyle]="{'left.%': item.position }"><md-icon>{{ item.icon }}</md-icon></div>
   </ng-container>
 </div>

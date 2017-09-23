@@ -1,16 +1,18 @@
-import { TimePipe } from '../shared/pipes/time-pipe.pipe';
-import { AddAudioCommentComponent } from '../shared/dialog/add-audio-comment/add-audio-comment.component';
-import { AudioCommentService } from '../shared/audio-comment/audio-comment.service';
-import { AddBookmarkComponent } from '../shared/dialog/add-bookmark/add-bookmark.component';
-import { VideoService } from '../video/video.service';
-import { BookmarkService } from '../shared/bookmark/bookmark.service';
+import { ActionService } from '../action.service';
+import { TimePipe } from '../../shared/pipes/time-pipe.pipe';
+import { AddAudioCommentComponent } from '../../shared/dialog/add-audio-comment/add-audio-comment.component';
+import { AudioCommentService } from '../../shared/audio-comment/audio-comment.service';
+import { AddBookmarkComponent } from '../../shared/dialog/add-bookmark/add-bookmark.component';
+import { VideoService } from '../../video/video.service';
+import { BookmarkService } from '../../shared/bookmark/bookmark.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MdDialog, MdSnackBar, MdTooltip } from '@angular/material';
 
-export enum ActionMode {
-  bookmark = 'bookmark',
-  audio = 'audio',
-  vibration = 'vibration'
+const DEFAULT_TOOLTIP_LABEL = 'Halten zum Aufnehmen';
+
+const enum RECORD_ICON {
+  ON = 'fiber_smart_record',
+  OFF = 'fiber_manual_record'
 }
 
 @Component({
@@ -19,9 +21,9 @@ export enum ActionMode {
   styleUrls: ['./action-controls.component.scss']
 })
 export class ActionControlsComponent implements OnInit {
-  mode: string = ActionMode.bookmark;
-  recordIcon = 'fiber_manual_record';
-  tooltipLabel = '';
+  mode: string;
+  recordIcon = RECORD_ICON.OFF;
+  tooltipLabel = DEFAULT_TOOLTIP_LABEL;
   @ViewChild('tooltip') tooltip: MdTooltip;
   // isPressing = false;
   pressInterval;
@@ -33,16 +35,19 @@ export class ActionControlsComponent implements OnInit {
     private audio: AudioCommentService,
     private dialog: MdDialog,
     private snackbar: MdSnackBar,
-    private timePipe: TimePipe
+    private timePipe: TimePipe,
+    private action: ActionService
   ) { }
 
   ngOnInit() {
+    this.action.mode$.subscribe(
+      mode => this.mode = mode
+    );
     this.audio.init();
-    // this.tooltip.hide();
   }
 
   setMode(mode: string) {
-    this.mode = mode;
+    this.action.setMode(mode);
   }
 
   addBookmark() {
@@ -63,29 +68,28 @@ export class ActionControlsComponent implements OnInit {
   }
 
   startRecording() {
+    console.log('recording...');
+    this.showTooltip();
+    this.video.player.pause();
     this.audio.startRecording();
+    this.recordIcon = RECORD_ICON.ON;
   }
 
   stopRecording() {
+    console.log('stop recording...');
     this.audio.stopRecording();
+    this.recordIcon = RECORD_ICON.OFF;
+    this.tooltip.hide();
+    this.tooltipLabel = '';
+    window.clearInterval(this.pressInterval);
   }
 
-  onPress(e) {
-    console.log('recording...:', e);
-    this.video.player.pause();
+  onPress() {
     this.startRecording();
-    this.recordIcon = 'fiber_smart_record';
-    this.showTooltip();
   }
 
   onPressUp(e) {
-    console.log('stop recording...');
     this.stopRecording();
-    // change action button
-    this.recordIcon = 'fiber_manual_record';
-
-    // this.hideTooltip();
-    // show dialog
     const audioCommentDialog = this.dialog.open(AddAudioCommentComponent, {
       data: {
         timestamp: this.video.currentTime
@@ -104,25 +108,12 @@ export class ActionControlsComponent implements OnInit {
   }
 
   showTooltip() {
-    console.log('showing Tooltip');
     this.audioDuration = 0;
-    // this.isPressing = true;
     this.tooltip.show();
     this.pressInterval = window.setInterval(() => {
-      // if (this.isPressing) {
-        this.tooltipLabel = this.timePipe.transform(this.audioDuration, 'mm:ss');
-        this.audioDuration = this.audioDuration + 1;
-      // }
-      console.log(this.audioDuration);
+      this.tooltipLabel = this.timePipe.transform(this.audioDuration, 'mm:ss');
+      this.audioDuration++;
     }, 1000);
-  }
-
-  hideTooltip() {
-    console.log('Hiding Tooltip');
-    this.tooltip.hide();
-    // this.isPressing = false;
-    window.clearInterval(this.pressInterval);
-    // this.tooltipLabel = '';
   }
 
   onTap() {

@@ -1,3 +1,4 @@
+import { ActionService } from './actions/action.service';
 import { AudioCommentService } from './shared/audio-comment/audio-comment.service';
 import { BookmarkService } from './shared/bookmark/bookmark.service';
 import { VideoService } from './video/video.service';
@@ -25,7 +26,7 @@ import { VideoComponent } from './video/video.component';
 import { TimePipe } from './shared/pipes/time-pipe.pipe';
 import { ControlsComponent } from './controls/controls.component';
 import { TimelineComponent } from './timeline/timeline.component';
-import { ActionControlsComponent } from './action-controls/action-controls.component';
+import { ActionControlsComponent } from './actions/actions-controls/action-controls.component';
 import { AddBookmarkComponent } from './shared/dialog/add-bookmark/add-bookmark.component';
 import { SidenavComponent } from './layout/sidenav/sidenav.component';
 import { AddAudioCommentComponent } from './shared/dialog/add-audio-comment/add-audio-comment.component';
@@ -74,7 +75,7 @@ const MaterialModules = [
     AddBookmarkComponent,
     AddAudioCommentComponent
   ],
-  providers: [VideoService, BookmarkService, AudioCommentService, TimePipe],
+  providers: [VideoService, BookmarkService, AudioCommentService, TimePipe, ActionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
