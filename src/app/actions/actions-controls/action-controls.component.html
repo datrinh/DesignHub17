@@ -16,7 +16,7 @@
     [ngClass]="{'inactive': !(mode === 'bookmark')}"
     id="actionSelectionBookmark"
     class="actionSelection"
-    md-mini-fab><md-icon>bookmark</md-icon>
+    md-mini-fab><md-icon>bookmark_border</md-icon>
 </button>
     
 <button
@@ -24,7 +24,7 @@
     [ngClass]="{'inactive': !(mode === 'vibration')}"
     id="actionSelectionVibration"
     class="actionSelection"
-    md-mini-fab><md-icon>vibration</md-icon>
+    md-mini-fab><md-icon>hdr_weak</md-icon>
 </button>
 
 <!-- Action Button -->
@@ -38,7 +38,7 @@
     [mdTooltip]="tooltipLabel"
     id="actionSelection"
     class="actionSelection"
-    md-fab><md-icon>{{ recordIcon }}</md-icon>
+    md-fab><md-icon>add</md-icon>
 </button>
 
 <button
@@ -46,7 +46,7 @@
     *ngIf="mode === 'bookmark'"
     id="actionSelection"
     class="actionSelection"
-    md-fab><md-icon>bookmark</md-icon>
+    md-fab><md-icon>add</md-icon>
 </button>
 
 <button
@@ -54,5 +54,5 @@
     id="actionSelection"
     class="actionSelection"
     [mdTooltip]="'WIP'"
-    md-fab><md-icon>vibration</md-icon>
+    md-fab><md-icon>add</md-icon>
 </button>
