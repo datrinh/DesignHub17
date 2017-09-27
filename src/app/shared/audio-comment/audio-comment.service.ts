@@ -18,8 +18,15 @@ export class AudioCommentService {
   audioStore: AudioComment[] = [];
   stopped = true;
   mediaRecorder;
+  tempRecord: AudioComment = null;
 
-  audioComments: BehaviorSubject<AudioComment[]> = new BehaviorSubject<AudioComment[]>(this.audioStore);
+  private status: BehaviorSubject<string> = new BehaviorSubject<string>('start');
+  status$: Observable<string> = this.status.asObservable();
+
+  private tempRecordSub: BehaviorSubject<AudioComment> = new BehaviorSubject<AudioComment>(this.tempRecord);
+  tempRecordSub$: Observable<AudioComment> = this.tempRecordSub.asObservable();
+
+  private audioComments: BehaviorSubject<AudioComment[]> = new BehaviorSubject<AudioComment[]>(this.audioStore);
   audioComments$: Observable<AudioComment[]> = this.audioComments.asObservable();
 
   constructor(
@@ -47,31 +54,36 @@ export class AudioCommentService {
       const audio = new Audio();
       const source = URL.createObjectURL(blob);
       audio.src = source;
-      const newAudio: AudioComment = {
+      this.tempRecord = {
         id: this.audioStore.length,
         audio: audio,
         timestamp: this.video.currentTime,
         type: 'audio'
-        // link: URL.createObjectURL(blob)
       };
-      // preemptive push
-      this.audioStore.push(newAudio);
-      this.audioComments.next(this.audioStore);
+      this.tempRecordSub.next(this.tempRecord);
       // clear chunks
       recordedChunks = [];
-
-      console.log('stop', newAudio);
+      console.log(this.tempRecord);
     };
   }
 
   startRecording() {
     this.stopped = false;
+    this.status.next('recording');
     this.mediaRecorder.start();
   }
 
   stopRecording() {
     this.mediaRecorder.stop();
+    this.status.next('done');
     this.stopped = true;
+  }
+
+  saveRecord() {
+    this.audioStore.push(this.tempRecord);
+    this.audioComments.next(this.audioStore);
+    this.tempRecordSub.next(null);
+    this.status.next('start');
   }
 
   deleteRecord(id: number) {
@@ -89,6 +101,15 @@ export class AudioCommentService {
     audio.src = source;
     audio.load();
     audio.play();
+  }
+
+  playTempRecord() {
+    this.playRecord(this.tempRecord.audio.src);
+  }
+
+  reset() {
+    this.status.next('start');
+    this.mediaRecorder.stop();
   }
 
 }

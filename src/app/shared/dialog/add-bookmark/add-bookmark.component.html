@@ -1,12 +1,14 @@
 <h2 md-dialog-title>Lesezeichen setzen</h2>
-<md-dialog-content>
-  <span>Zeitpunkt: {{ timestamp | timePipe:'mm:ss' }}</span>
-  <md-input-container>
-    <input mdInput placeholder="Titel" #title>
-  </md-input-container>
-</md-dialog-content>
-<md-dialog-actions>
-  <button md-button md-dialog-close>Abbrechen</button>
-  <!-- Can optionally provide a result for the closing dialog. -->
-  <button md-button [md-dialog-close]="title" color="primary">Speichern</button>
-</md-dialog-actions>
+<form>
+  <md-dialog-content>
+    <md-form-field>
+      <input mdInput placeholder="Titel" #title>
+      <span mdSuffix>{{ timestamp | timePipe:'mm:ss' }}</span>
+    </md-form-field>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <button md-button md-dialog-close>Abbrechen</button>
+    <!-- Can optionally provide a result for the closing dialog. -->
+    <button md-button [md-dialog-close]="title" color="primary">Speichern</button>
+  </md-dialog-actions>
+</form>

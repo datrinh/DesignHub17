@@ -28,7 +28,7 @@
 </button>
 
 <!-- Action Button -->
-<button
+<!-- <button
     *ngIf="mode === 'audio'"
     class="actionSelection"
     (press)="onPress($event)"
@@ -36,6 +36,14 @@
     (tap)="onTap()"
     #tooltip="mdTooltip"
     [mdTooltip]="tooltipLabel"
+    id="actionSelection"
+    class="actionSelection"
+    md-fab><md-icon>add</md-icon>
+</button> -->
+
+<button
+    (click)="addAudio()"
+    *ngIf="mode === 'audio'"
     id="actionSelection"
     class="actionSelection"
     md-fab><md-icon>add</md-icon>

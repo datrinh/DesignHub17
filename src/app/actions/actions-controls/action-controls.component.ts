@@ -119,4 +119,23 @@ export class ActionControlsComponent implements OnInit {
   onTap() {
     this.tooltipLabel = 'Halten zum Aufnehmen';
   }
+
+  addAudio() {
+    this.video.player.pause();
+    const audioCommentDialog = this.dialog.open(AddAudioCommentComponent, {
+      data: {
+        timestamp: this.video.currentTime
+      }
+    });
+    audioCommentDialog.afterClosed().subscribe(res => {
+      if (res) {
+        this.audio.saveRecord();
+        this.snackbar.open('Kommentar wurde gespeichert.', null, {
+          duration: 2000
+        });
+      } else {
+        this.audio.reset();
+      }
+    });
+  }
 }

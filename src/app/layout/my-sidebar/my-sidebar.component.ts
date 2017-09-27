@@ -42,25 +42,25 @@ export class MySidebarComponent implements OnInit {
 
   sidebarOnChange(value: any) {
     switch (value) {
-      case "bookmark":
+      case 'bookmark':
         this.isCommentsVisible = false;
         this.isVibrationsVisible = false;
         this.isSettingsVisible = false;
         this.isBookmarksVisible = !this.isBookmarksVisible;
         break;
-      case "comment":
+      case 'comment':
         this.isBookmarksVisible = false;
         this.isVibrationsVisible = false;
         this.isSettingsVisible = false;
         this.isCommentsVisible = !this.isCommentsVisible;
         break;
-      case "vibration":
+      case 'vibration':
         this.isBookmarksVisible = false;
         this.isCommentsVisible = false;
         this.isSettingsVisible = false;
         this.isVibrationsVisible = !this.isVibrationsVisible;
         break;
-      case "settings":
+      case 'settings':
         this.isBookmarksVisible = false;
         this.isCommentsVisible = false;
         this.isVibrationsVisible = false;

@@ -1,10 +1,21 @@
 <h2 md-dialog-title>Audiokommentar speichern</h2>
 <md-dialog-content>
-  <span>Zeitpunkt: {{ timestamp | timePipe:'mm:ss' }}</span>
-  <button (click)="play()" md-button><md-icon>play</md-icon> Abspielen</button>
+  <button *ngIf="status === 'start'" md-button (click)="startRec()"><md-icon>mic</md-icon> Aufnahme starten</button>
+
+  <button *ngIf="status === 'recording'" md-button (click)="stopRec()"><md-icon>stop</md-icon></button>
+
+  <button *ngIf="status === 'done'" md-button (click)="play()"><md-icon>play_arrow</md-icon> Abspielen</button>
+
+  <span *ngIf="status === 'recording'">
+    <!-- <md-icon>fiber_manual_record</md-icon> -->
+    {{ duration | timePipe:'mm:ss' }}
+  </span>
+
+  <!-- <span>Zeitpunkt: {{ timestamp | timePipe:'mm:ss' }}</span> -->
+  
 </md-dialog-content>
 <md-dialog-actions>
-  <button md-button [md-dialog-close]="false">Löschen</button>
+  <button md-button [md-dialog-close]="false">Abbrechen</button>
   <!-- Can optionally provide a result for the closing dialog. -->
-  <button md-button [md-dialog-close]="true" color="primary">Speichern</button>
+  <button md-button [disabled]="!(status === 'done')" [md-dialog-close]="true" color="primary">Speichern</button>
 </md-dialog-actions>

@@ -9,6 +9,10 @@ import { MD_DIALOG_DATA } from '@angular/material';
 })
 export class AddAudioCommentComponent implements OnInit {
   timestamp: number;
+  duration = 0;
+  durationInterval;
+  tempRec = null;
+  status;
 
   constructor(
     private audio: AudioCommentService,
@@ -17,10 +21,28 @@ export class AddAudioCommentComponent implements OnInit {
 
   ngOnInit() {
     this.timestamp = this.data.timestamp;
+    this.audio.tempRecordSub$.subscribe((record) => {
+      this.tempRec = record;
+    });
+    this.audio.status$.subscribe((status) => {
+      this.status = status;
+    });
   }
 
   play() {
-    this.audio.playRecord(this.audio.audioStore[this.audio.audioStore.length - 1].audio.src);
+    this.audio.playTempRecord();
+  }
+
+  startRec() {
+    this.durationInterval = window.setInterval(() => {
+      this.duration++;
+    }, 1000);
+    this.audio.startRecording();
+  }
+
+  stopRec() {
+    window.clearInterval(this.durationInterval);
+    this.audio.stopRecording();
   }
 
 }
