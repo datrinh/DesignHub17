@@ -1,4 +1,4 @@
-<h2 md-dialog-title>Audiokommentar speichern</h2>
+<h2 md-dialog-title>Audiokommentar aufnehmen</h2>
 <md-dialog-content>
   <button *ngIf="status === 'start'" md-button (click)="startRec()"><md-icon>mic</md-icon> Aufnehmen</button>
 
@@ -6,10 +6,10 @@
 
   <button *ngIf="status === 'done'" md-button (click)="play()"><md-icon>play_arrow</md-icon> Abspielen</button>
 
-  <span *ngIf="status === 'recording'">
+  <div *ngIf="status === 'recording'" style="display:inline-block;">
     <!-- <md-icon>fiber_manual_record</md-icon> -->
-    {{ duration | timePipe:'mm:ss' }}
-  </span>
+    <md-spinner class="rec-spinner"></md-spinner> <span>{{ duration | timePipe:'mm:ss' }}</span>
+  </div>
 
   <!-- <span>Zeitpunkt: {{ timestamp | timePipe:'mm:ss' }}</span> -->
   

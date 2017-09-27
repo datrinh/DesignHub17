@@ -17,7 +17,8 @@ import {
   MdInputModule,
   MdSnackBarModule,
   MdListModule,
-  MdTooltipModule
+  MdTooltipModule,
+  MdProgressSpinnerModule
 } from '@angular/material';
 import 'hammerjs';
 // import { AppRoutingModule } from './app-routing.module';
@@ -47,7 +48,8 @@ const MaterialModules = [
   MdDialogModule,
   MdInputModule,
   MdSnackBarModule,
-  MdListModule
+  MdListModule,
+  MdProgressSpinnerModule
 ];
 
 @NgModule({

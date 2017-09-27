@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Rx';
 import { AudioComment, AudioCommentService } from '../../shared/audio-comment/audio-comment.service';
 import { Bookmark, BookmarkService } from '../../shared/bookmark/bookmark.service';
 import { Component, OnInit } from '@angular/core';
-import { MdDialog } from '@angular/material';
+import { MdDialog, MdSnackBar } from '@angular/material';
 
 export interface TimelineItem {
   item: Bookmark | AudioComment;
@@ -18,7 +18,7 @@ export interface TimelineItem {
   styleUrls: ['./timeline-items.component.scss']
 })
 export class TimelineItemsComponent implements OnInit {
-  offset = 0.955;
+  offset = 0.95;
 
   items$: Observable<TimelineItem[]>;
 
@@ -26,7 +26,8 @@ export class TimelineItemsComponent implements OnInit {
     public bookmark: BookmarkService,
     public audio: AudioCommentService,
     private video: VideoService,
-    private dialog: MdDialog
+    private dialog: MdDialog,
+    private snackbar: MdSnackBar
   ) { }
 
   ngOnInit() {
@@ -51,14 +52,21 @@ export class TimelineItemsComponent implements OnInit {
   }
 
   onClick(item: TimelineItem) {
+    this.video.player.pause();
     const editDialog = this.dialog.open(EditTimelineItemComponent, {
       data: {
         item: item.item
       }
     });
 
-    editDialog.afterClosed().subscribe(res => {
-      console.log(res);
+    editDialog.afterClosed().subscribe((res) => {
+      if (item.item.type === 'bookmark' && res) {
+        this.bookmark.editBookmark(item.item.id, res);
+
+        this.snackbar.open('Lesezeichen ' + res + ' geändert', null, {
+          duration: 2000
+        });
+      }
     });
   }
 }

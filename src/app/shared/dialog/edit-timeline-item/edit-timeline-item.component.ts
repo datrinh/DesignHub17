@@ -1,6 +1,6 @@
 import { TimelineItem } from '../../../timeline/timeline-items/timeline-items.component';
 import { AudioComment, AudioCommentService } from '../../audio-comment/audio-comment.service';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MD_DIALOG_DATA } from '@angular/material';
 import { Bookmark, BookmarkService } from '../../bookmark/bookmark.service';
 
@@ -10,7 +10,6 @@ import { Bookmark, BookmarkService } from '../../bookmark/bookmark.service';
   styleUrls: ['./edit-timeline-item.component.scss']
 })
 export class EditTimelineItemComponent implements OnInit {
-
   item;
 
   constructor(
@@ -20,7 +19,6 @@ export class EditTimelineItemComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // console.log(this.data);
     this.item = this.data.item;
   }
 

@@ -33,6 +33,12 @@ export class BookmarkService {
     // console.log(this.bookmarkStore);
   }
 
+  editBookmark(id: number, newVal: string) {
+    const index = this.bookmarkStore.indexOf(this.getBookmark(id));
+    this.bookmarkStore[index].title = newVal;
+    this.bookmarks.next(this.bookmarkStore);
+  }
+
   deleteBookmark(id: number) {
     this.bookmarkStore = this.bookmarkStore.filter((item) => id !== item.id);
     this.bookmarks.next(this.bookmarkStore);
