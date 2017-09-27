@@ -3,7 +3,7 @@
     "short_name": "DH Tanz",
     "theme_color": "#FF6143",
     "background_color": "#FF6143",
-    "start_url": "/",
+    "start_url": "https://datrinh.github.io/DesignHub17/",
     "display": "standalone",
     "orientation": "landscape",
     "icons": [
