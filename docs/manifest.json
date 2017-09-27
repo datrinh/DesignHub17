@@ -1,0 +1,23 @@
+{
+    "name": "DesignHub Tanz",
+    "short_name": "DH Tanz",
+    "theme_color": "#FF6143",
+    "background_color": "#FF6143",
+    "start_url": "/",
+    "display": "standalone",
+    "orientation": "landscape",
+    "icons": [
+      {
+        "src": "assets/android-chrome-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "density": "5.0"
+      },
+      {
+        "src": "assets/android-chrome-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "density": "4.0"
+      }
+    ]
+  }
