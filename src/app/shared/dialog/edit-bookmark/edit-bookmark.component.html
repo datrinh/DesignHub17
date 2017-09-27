@@ -1,6 +1,6 @@
-<h2 md-dialog-title>{{ item.title || 'Kommentar' }} bearbeiten</h2>
+<h2 md-dialog-title>{{ item.title }} bearbeiten</h2>
 <md-dialog-content>
-  <md-form-field [hidden]="!item.title">
+  <md-form-field>
     <input mdInput placeholder="Titel" #title [value]="item.title">
     <span mdSuffix>@{{ item.timestamp | timePipe:'mm:ss' }}</span>
   </md-form-field>

@@ -34,7 +34,8 @@ import { AddAudioCommentComponent } from './shared/dialog/add-audio-comment/add-
 import { Drag2windComponent } from './drag2wind/drag2wind.component';
 // import { MySidebarComponent } from './layout/my-sidebar/my-sidebar.component';
 import { TimelineItemsComponent } from './timeline/timeline-items/timeline-items.component';
-import { EditTimelineItemComponent } from './shared/dialog/edit-timeline-item/edit-timeline-item.component';
+import { EditBookmarkComponent } from './shared/dialog/edit-bookmark/edit-bookmark.component';
+import { EditAudioCommentComponent } from './shared/dialog/edit-audio-comment/edit-audio-comment.component';
 
 // add all need Material modules here
 const MaterialModules = [
@@ -66,7 +67,8 @@ const MaterialModules = [
     AddAudioCommentComponent,
     // MySidebarComponent,
     TimelineItemsComponent,
-    EditTimelineItemComponent
+    EditBookmarkComponent,
+    EditAudioCommentComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +80,8 @@ const MaterialModules = [
   entryComponents: [
     AddBookmarkComponent,
     AddAudioCommentComponent,
-    EditTimelineItemComponent
+    EditAudioCommentComponent,
+    EditBookmarkComponent
   ],
   providers: [VideoService, BookmarkService, AudioCommentService, TimePipe, ActionService],
   bootstrap: [AppComponent]

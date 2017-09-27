@@ -1,4 +1,5 @@
-import { EditTimelineItemComponent } from '../../shared/dialog/edit-timeline-item/edit-timeline-item.component';
+import { EditAudioCommentComponent } from '../../shared/dialog/edit-audio-comment/edit-audio-comment.component';
+import { EditBookmarkComponent } from '../../shared/dialog/edit-bookmark/edit-bookmark.component';
 import { VideoService } from '../../video/video.service';
 import { Observable } from 'rxjs/Rx';
 import { AudioComment, AudioCommentService } from '../../shared/audio-comment/audio-comment.service';
@@ -53,7 +54,14 @@ export class TimelineItemsComponent implements OnInit {
 
   onClick(item: TimelineItem) {
     this.video.player.pause();
-    const editDialog = this.dialog.open(EditTimelineItemComponent, {
+    let component;
+    if (item.item.type === 'bookmark') {
+       component = EditBookmarkComponent;
+    } else if (item.item.type === 'audio') {
+      component = EditAudioCommentComponent;
+    }
+
+    const editDialog = this.dialog.open(component, {
       data: {
         item: item.item
       }
