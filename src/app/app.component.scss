@@ -23,7 +23,7 @@ main {
   z-index: 1;
 
 	display: grid;
-	grid: $comet-size-l repeat(9, 1fr) #{$comet-size-l} / #{$comet-size-xl} repeat(12, 1fr) $comet-size-l;
+	grid: $comet-size-l repeat(9, 1fr) #{$comet-size-l} / #{$comet-size-l} repeat(12, 1fr) $comet-size-l;
 	grid-gap: $comet-space-s;
 }
 
