@@ -1,4 +1,4 @@
-import { AudioCommentService } from '../../audio-comment/audio-comment.service';
+import { AudioComment, AudioCommentService } from '../../audio-comment/audio-comment.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MD_DIALOG_DATA } from '@angular/material';
 
@@ -19,7 +19,11 @@ export class EditAudioCommentComponent implements OnInit {
     this.item = this.data.item;
   }
 
-  onDelete(item) {
+  onDelete(item: AudioComment) {
     this.audio.deleteRecord(item.id);
+  }
+
+  play(item: AudioComment) {
+    this.audio.playRecord(item.audio.src);
   }
 }
