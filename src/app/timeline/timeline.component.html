@@ -1,4 +1,4 @@
-<div class="wrapper">
+<!-- <div class="wrapper"> -->
   <dh-timeline-items></dh-timeline-items>
   <md-slider
     (input)="setCurrentTime($event)" 
@@ -7,6 +7,6 @@
     [step]="0.01"
     [value]="videoService.currentTime$ | async">
   </md-slider>
-  <span>{{ videoService.currentTime$ | async | timePipe:'mm:ss' }} | {{ videoService.duration$ | async | timePipe:'mm:ss' }}</span>
+  <span style="color:white">{{ videoService.currentTime$ | async | timePipe:'mm:ss' }} | {{ videoService.duration$ | async | timePipe:'mm:ss' }}</span>
   
-</div>
+<!-- </div> -->

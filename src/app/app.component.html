@@ -1,13 +1,27 @@
+<md-sidenav-container>
 <dh-video></dh-video>
 
-<main>
-  <dh-drag2wind></dh-drag2wind>
 
-  <!-- <dh-my-sidebar id="sidebar" class="sidebar"></dh-my-sidebar> -->
+  <md-sidenav #sidenav>
+    <dh-sidenav></dh-sidenav>
+  </md-sidenav>
+    
+  <main>
+    <dh-drag2wind></dh-drag2wind>
 
-  <dh-controls id="controls"></dh-controls>
+    <nav id="menu">
+      <button md-icon-button class="transparent-button" (click)="sidenav.open()"><md-icon>menu</md-icon></button>
+    </nav>
+  
 
-  <dh-timeline id="timeline"></dh-timeline>
+    <!-- <dh-my-sidebar id="sidebar" class="sidebar"></dh-my-sidebar> -->
+    <div class="gradient-bg"></div>
 
-  <dh-action-controls id="action-selection"></dh-action-controls>
-</main>
+    <dh-controls id="controls"></dh-controls>
+
+    <dh-timeline id="timeline"></dh-timeline>
+
+    <dh-action-controls id="action-selection"></dh-action-controls>
+  </main>
+</md-sidenav-container>
+  

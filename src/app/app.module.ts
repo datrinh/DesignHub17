@@ -12,7 +12,7 @@ import {
   MdIconModule,
   MdProgressBarModule,
   MdSliderModule,
-  // MdSidenavModule,
+  MdSidenavModule,
   MdDialogModule,
   MdInputModule,
   MdSnackBarModule,
@@ -33,6 +33,7 @@ import { AddAudioCommentComponent } from './shared/dialog/add-audio-comment/add-
 import { Drag2windComponent } from './drag2wind/drag2wind.component';
 // import { MySidebarComponent } from './layout/my-sidebar/my-sidebar.component';
 import { TimelineItemsComponent } from './timeline/timeline-items/timeline-items.component';
+import { EditTimelineItemComponent } from './shared/dialog/edit-timeline-item/edit-timeline-item.component';
 
 // add all need Material modules here
 const MaterialModules = [
@@ -42,7 +43,7 @@ const MaterialModules = [
   MdIconModule,
   MdProgressBarModule,
   MdSliderModule,
-  // MdSidenavModule,
+  MdSidenavModule,
   MdDialogModule,
   MdInputModule,
   MdSnackBarModule,
@@ -62,7 +63,8 @@ const MaterialModules = [
     SidenavComponent,
     AddAudioCommentComponent,
     // MySidebarComponent,
-    TimelineItemsComponent
+    TimelineItemsComponent,
+    EditTimelineItemComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +75,8 @@ const MaterialModules = [
   ],
   entryComponents: [
     AddBookmarkComponent,
-    AddAudioCommentComponent
+    AddAudioCommentComponent,
+    EditTimelineItemComponent
   ],
   providers: [VideoService, BookmarkService, AudioCommentService, TimePipe, ActionService],
   bootstrap: [AppComponent]

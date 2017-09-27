@@ -1,11 +1,13 @@
+import { EditTimelineItemComponent } from '../../shared/dialog/edit-timeline-item/edit-timeline-item.component';
 import { VideoService } from '../../video/video.service';
 import { Observable } from 'rxjs/Rx';
 import { AudioComment, AudioCommentService } from '../../shared/audio-comment/audio-comment.service';
 import { Bookmark, BookmarkService } from '../../shared/bookmark/bookmark.service';
 import { Component, OnInit } from '@angular/core';
+import { MdDialog } from '@angular/material';
 
-interface TimelineItem {
-  timestamp: number;
+export interface TimelineItem {
+  item: Bookmark | AudioComment;
   position: number;
   icon: string;
 }
@@ -23,7 +25,8 @@ export class TimelineItemsComponent implements OnInit {
   constructor(
     public bookmark: BookmarkService,
     public audio: AudioCommentService,
-    private video: VideoService
+    private video: VideoService,
+    private dialog: MdDialog
   ) { }
 
   ngOnInit() {
@@ -35,7 +38,7 @@ export class TimelineItemsComponent implements OnInit {
         // TODO: more types
         const icon = item.type === 'bookmark' ? 'bookmark' : 'mic';
         return {
-          timestamp: item.timestamp,
+          item: item,
           position: position,
           icon: icon
         };
@@ -45,5 +48,23 @@ export class TimelineItemsComponent implements OnInit {
 
   getPosition(timestamp: number): number {
     return this.video.calcProgress(timestamp, this.video.duration);
+  }
+
+  onClick(item: TimelineItem) {
+    // console.log(item);
+    // switch (item.item.type) {
+    //   case 'bookmark':
+    //     break;
+    // }
+
+    const editDialog = this.dialog.open(EditTimelineItemComponent, {
+      data: {
+        item: item.item
+      }
+    }).afterClosed().subscribe(res => {
+      if (res) {
+        console.log(res);
+      }
+    });
   }
 }
