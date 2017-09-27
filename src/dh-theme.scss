@@ -10,8 +10,8 @@ $dh-typography: mat-typography-config(
 // Be sure that you only ever include this mixin once!
 @include mat-core($dh-typography);
 
-$dh-primary: $dh-orange;
-$dh-accent: $dh-orange;
+$dh-primary: $dh-orange-palette;
+$dh-accent: $dh-orange-palette;
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker

@@ -1,7 +1,14 @@
-// @import "./../../variables.scss";
+@import "./../../../variables.scss";
 
-.inactive {
-  background-color: grey;
+.active {
+  md-icon {
+    color: $dh-orange;
+  }
+}
+
+.actionSelection {
+  color: black;
+  background-color: white;
 }
 
 #actionSelectionBookmark {
@@ -31,12 +38,13 @@
   left: 20%;
 }
 
-#actionSelection {
+#actionButton {
   // align-self: center;
   // grid-area: 2 / 2;
   // height: 50px;
   // width: 50px;
   // font-size: 2em;
+  // background-color: $dh-grey;
   position: absolute;
   top: 51%;
   left: 51%;

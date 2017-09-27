@@ -5,7 +5,7 @@
 <!-- Mode Switch Buttons -->
 <button
     (click)="setMode('audio')"
-    [ngClass]="{'inactive': !(mode === 'audio')}"
+    [ngClass]="{'active': mode === 'audio'}"
     id="actionSelectionComment"
     class="actionSelection"
     md-mini-fab><md-icon>mic</md-icon>
@@ -13,7 +13,7 @@
 
 <button
     (click)="setMode('bookmark')"
-    [ngClass]="{'inactive': !(mode === 'bookmark')}"
+    [ngClass]="{'active': mode === 'bookmark'}"
     id="actionSelectionBookmark"
     class="actionSelection"
     md-mini-fab><md-icon>bookmark_border</md-icon>
@@ -21,7 +21,7 @@
     
 <button
     (click)="setMode('vibration')"
-    [ngClass]="{'inactive': !(mode === 'vibration')}"
+    [ngClass]="{'active': mode === 'vibration'}"
     id="actionSelectionVibration"
     class="actionSelection"
     md-mini-fab><md-icon>hdr_weak</md-icon>
@@ -44,23 +44,20 @@
 <button
     (click)="addAudio()"
     *ngIf="mode === 'audio'"
-    id="actionSelection"
-    class="actionSelection"
+    id="actionButton"
     md-fab><md-icon>add</md-icon>
 </button>
 
 <button
     (click)="addBookmark()"
     *ngIf="mode === 'bookmark'"
-    id="actionSelection"
-    class="actionSelection"
+    id="actionButton"
     md-fab><md-icon>add</md-icon>
 </button>
 
 <button
     *ngIf="mode === 'vibration'"
-    id="actionSelection"
-    class="actionSelection"
+    id="actionButton"
     [mdTooltip]="'WIP'"
     md-fab><md-icon>add</md-icon>
 </button>
