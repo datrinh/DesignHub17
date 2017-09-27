@@ -16,7 +16,7 @@ export interface AudioComment {
 @Injectable()
 export class AudioCommentService {
   audioStore: AudioComment[] = [];
-  stopped = true;
+  // stopped = true;
   mediaRecorder;
   tempRecord: AudioComment = null;
 
@@ -68,7 +68,7 @@ export class AudioCommentService {
   }
 
   startRecording() {
-    this.stopped = false;
+    // this.stopped = false;
     this.status.next('recording');
     this.mediaRecorder.start();
   }
@@ -76,7 +76,7 @@ export class AudioCommentService {
   stopRecording() {
     this.mediaRecorder.stop();
     this.status.next('done');
-    this.stopped = true;
+    // this.stopped = true;
   }
 
   saveRecord() {

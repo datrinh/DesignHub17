@@ -1,8 +1,8 @@
 <h2 md-dialog-title>Audiokommentar speichern</h2>
 <md-dialog-content>
-  <button *ngIf="status === 'start'" md-button (click)="startRec()"><md-icon>mic</md-icon> Aufnahme starten</button>
+  <button *ngIf="status === 'start'" md-button (click)="startRec()"><md-icon>mic</md-icon> Aufnehmen</button>
 
-  <button *ngIf="status === 'recording'" md-button (click)="stopRec()"><md-icon>stop</md-icon></button>
+  <button *ngIf="status === 'recording'" md-button (click)="stopRec()"><md-icon>stop</md-icon> Stoppen</button>
 
   <button *ngIf="status === 'done'" md-button (click)="play()"><md-icon>play_arrow</md-icon> Abspielen</button>
 

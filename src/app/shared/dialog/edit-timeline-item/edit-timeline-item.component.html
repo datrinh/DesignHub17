@@ -1,16 +1,14 @@
 <h2 md-dialog-title>{{ item.title || 'Kommentar' }} bearbeiten</h2>
-<form>
-  <md-dialog-content>
-    <md-form-field *ngIf="item.title">
-      <input mdInput placeholder="Titel" #title>
-      <span mdSuffix>@{{ item.timestamp | timePipe:'mm:ss' }}</span>
-    </md-form-field>
+<md-dialog-content>
+  <!-- <md-form-field *ngIf="item.title">
+    <input mdInput placeholder="Titel" #title [value]="item.title">
+    <span mdSuffix>@{{ item.timestamp | timePipe:'mm:ss' }}</span>
+  </md-form-field> -->
 
-    <button md-button (click)="onDelete(item)">Löschen</button>
-  </md-dialog-content>
-  <md-dialog-actions>
-    <button md-button md-dialog-close>Abbrechen</button>
-    <!-- Can optionally provide a result for the closing dialog. -->
-    <button md-button [md-dialog-close]="title" color="primary">Speichern</button>
-  </md-dialog-actions>
-</form>
+  <button md-button (click)="onDelete(item)" [md-dialog-close]="'deleted'">Löschen</button>
+</md-dialog-content>
+<md-dialog-actions>
+  <button md-button md-dialog-close>Abbrechen</button>
+  <!-- Can optionally provide a result for the closing dialog. -->
+  <!-- <button md-button [md-dialog-close]="title" color="primary">Speichern</button> -->
+</md-dialog-actions>

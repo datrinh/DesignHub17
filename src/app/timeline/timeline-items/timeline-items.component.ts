@@ -51,20 +51,14 @@ export class TimelineItemsComponent implements OnInit {
   }
 
   onClick(item: TimelineItem) {
-    // console.log(item);
-    // switch (item.item.type) {
-    //   case 'bookmark':
-    //     break;
-    // }
-
     const editDialog = this.dialog.open(EditTimelineItemComponent, {
       data: {
         item: item.item
       }
-    }).afterClosed().subscribe(res => {
-      if (res) {
-        console.log(res);
-      }
+    });
+
+    editDialog.afterClosed().subscribe(res => {
+      console.log(res);
     });
   }
 }
