@@ -20,9 +20,9 @@
 </button>
     
 <button
-    (click)="setMode('vibration')"
-    [ngClass]="{'active': mode === 'vibration'}"
-    id="actionSelectionVibration"
+    (click)="setMode('shape')"
+    [ngClass]="{'active': mode === 'shape'}"
+    id="actionSelectionShape"
     class="actionSelection"
     md-mini-fab><md-icon>hdr_weak</md-icon>
 </button>
@@ -56,8 +56,8 @@
 </button>
 
 <button
-    *ngIf="mode === 'vibration'"
+    (click)="addShape()"
+    *ngIf="mode === 'shape'"
     id="actionButton"
-    [mdTooltip]="'WIP'"
     md-fab><md-icon>add</md-icon>
 </button>

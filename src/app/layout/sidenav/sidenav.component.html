@@ -11,6 +11,13 @@
   </md-list-item>
   <md-divider></md-divider>
   <h3 md-subheader>Muster</h3>
+  <md-list-item
+    (click)="jumpToTimestamp(shape.timestamp)"
+    *ngFor="let shape of shape.shapes$ | async"
+    class="clickable">
+    <!-- <button (click)="deleteRecord(shape.id)" md-icon-button><md-icon md-list-icon>delete</md-icon></button> -->
+    <p md-line><md-icon>{{shape.icon}}</md-icon> {{shape.timestamp | timePipe:'mm:ss'}} </p>
+  </md-list-item>
   <md-divider></md-divider>
   <h3 md-subheader>Kommentare</h3>
   <md-list-item

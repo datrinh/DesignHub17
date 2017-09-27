@@ -1,0 +1,11 @@
+@import './../../../../variables.scss';
+
+.shape-item {
+    cursor: pointer;
+    &.selected {
+        background-color: lightgrey;
+        md-icon {
+            color: $dh-orange;
+        }
+    }
+}

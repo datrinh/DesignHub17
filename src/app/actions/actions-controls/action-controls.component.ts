@@ -1,3 +1,5 @@
+import { ShapeService } from '../../shared/shape/shape.service';
+import { AddShapeComponent } from '../../shared/dialog/add-shape/add-shape.component';
 import { ActionService } from '../action.service';
 import { TimePipe } from '../../shared/pipes/time-pipe.pipe';
 import { AddAudioCommentComponent } from '../../shared/dialog/add-audio-comment/add-audio-comment.component';
@@ -36,7 +38,8 @@ export class ActionControlsComponent implements OnInit {
     private dialog: MdDialog,
     private snackbar: MdSnackBar,
     private timePipe: TimePipe,
-    private action: ActionService
+    private action: ActionService,
+    private shape: ShapeService
   ) { }
 
   ngOnInit() {
@@ -67,58 +70,58 @@ export class ActionControlsComponent implements OnInit {
     });
   }
 
-  startRecording() {
-    console.log('recording...');
-    this.showTooltip();
-    this.video.player.pause();
-    this.audio.startRecording();
-    this.recordIcon = RECORD_ICON.ON;
-  }
+  // startRecording() {
+  //   console.log('recording...');
+  //   this.showTooltip();
+  //   this.video.player.pause();
+  //   this.audio.startRecording();
+  //   this.recordIcon = RECORD_ICON.ON;
+  // }
 
-  stopRecording() {
-    console.log('stop recording...');
-    this.audio.stopRecording();
-    this.recordIcon = RECORD_ICON.OFF;
-    this.tooltip.hide();
-    this.tooltipLabel = '';
-    window.clearInterval(this.pressInterval);
-  }
+  // stopRecording() {
+  //   console.log('stop recording...');
+  //   this.audio.stopRecording();
+  //   this.recordIcon = RECORD_ICON.OFF;
+  //   this.tooltip.hide();
+  //   this.tooltipLabel = '';
+  //   window.clearInterval(this.pressInterval);
+  // }
 
-  onPress() {
-    this.startRecording();
-  }
+  // onPress() {
+  //   this.startRecording();
+  // }
 
-  onPressUp(e) {
-    this.stopRecording();
-    const audioCommentDialog = this.dialog.open(AddAudioCommentComponent, {
-      data: {
-        timestamp: this.video.currentTime
-      }
-    });
-    audioCommentDialog.afterClosed().subscribe(res => {
-      if (res) {
-        // already preemptively saved
-        this.snackbar.open('Kommentar wurde gespeichert.', null, {
-          duration: 2000
-        });
-      } else {
-        this.audio.deleteLastRecord();
-      }
-    });
-  }
+  // onPressUp(e) {
+  //   this.stopRecording();
+  //   const audioCommentDialog = this.dialog.open(AddAudioCommentComponent, {
+  //     data: {
+  //       timestamp: this.video.currentTime
+  //     }
+  //   });
+  //   audioCommentDialog.afterClosed().subscribe(res => {
+  //     if (res) {
+  //       // already preemptively saved
+  //       this.snackbar.open('Kommentar wurde gespeichert.', null, {
+  //         duration: 2000
+  //       });
+  //     } else {
+  //       this.audio.deleteLastRecord();
+  //     }
+  //   });
+  // }
 
-  showTooltip() {
-    this.audioDuration = 0;
-    this.tooltip.show();
-    this.pressInterval = window.setInterval(() => {
-      this.tooltipLabel = this.timePipe.transform(this.audioDuration, 'mm:ss');
-      this.audioDuration++;
-    }, 1000);
-  }
+  // showTooltip() {
+  //   this.audioDuration = 0;
+  //   this.tooltip.show();
+  //   this.pressInterval = window.setInterval(() => {
+  //     this.tooltipLabel = this.timePipe.transform(this.audioDuration, 'mm:ss');
+  //     this.audioDuration++;
+  //   }, 1000);
+  // }
 
-  onTap() {
-    this.tooltipLabel = 'Halten zum Aufnehmen';
-  }
+  // onTap() {
+  //   this.tooltipLabel = 'Halten zum Aufnehmen';
+  // }
 
   addAudio() {
     this.video.player.pause();
@@ -135,6 +138,25 @@ export class ActionControlsComponent implements OnInit {
         });
       } else {
         this.audio.reset();
+      }
+    });
+  }
+
+  addShape() {
+    const timestamp = this.video.currentTime;
+    this.video.player.pause();
+    const shapeDialog = this.dialog.open(AddShapeComponent, {
+      data: {
+        timestamp: timestamp
+      }
+    });
+    shapeDialog.afterClosed().subscribe(res => {
+      if (res) {
+        console.log(res);
+        this.shape.createShape(timestamp, res.icon, res.title);
+        this.snackbar.open('Muster wurde gespeichert.', null, {
+          duration: 2000
+        });
       }
     });
   }

@@ -1,3 +1,4 @@
+import { ShapeService } from './shared/shape/shape.service';
 import { ActionService } from './actions/action.service';
 import { AudioCommentService } from './shared/audio-comment/audio-comment.service';
 import { BookmarkService } from './shared/bookmark/bookmark.service';
@@ -18,7 +19,8 @@ import {
   MdSnackBarModule,
   MdListModule,
   MdTooltipModule,
-  MdProgressSpinnerModule
+  MdProgressSpinnerModule,
+  MdGridListModule
 } from '@angular/material';
 import 'hammerjs';
 // import { AppRoutingModule } from './app-routing.module';
@@ -36,6 +38,7 @@ import { Drag2windComponent } from './drag2wind/drag2wind.component';
 import { TimelineItemsComponent } from './timeline/timeline-items/timeline-items.component';
 import { EditBookmarkComponent } from './shared/dialog/edit-bookmark/edit-bookmark.component';
 import { EditAudioCommentComponent } from './shared/dialog/edit-audio-comment/edit-audio-comment.component';
+import { AddShapeComponent } from './shared/dialog/add-shape/add-shape.component';
 
 // add all need Material modules here
 const MaterialModules = [
@@ -50,7 +53,8 @@ const MaterialModules = [
   MdInputModule,
   MdSnackBarModule,
   MdListModule,
-  MdProgressSpinnerModule
+  MdProgressSpinnerModule,
+  MdGridListModule
 ];
 
 @NgModule({
@@ -68,7 +72,8 @@ const MaterialModules = [
     // MySidebarComponent,
     TimelineItemsComponent,
     EditBookmarkComponent,
-    EditAudioCommentComponent
+    EditAudioCommentComponent,
+    AddShapeComponent
   ],
   imports: [
     BrowserModule,
@@ -81,9 +86,17 @@ const MaterialModules = [
     AddBookmarkComponent,
     AddAudioCommentComponent,
     EditAudioCommentComponent,
-    EditBookmarkComponent
+    EditBookmarkComponent,
+    AddShapeComponent
   ],
-  providers: [VideoService, BookmarkService, AudioCommentService, TimePipe, ActionService],
+  providers: [
+    VideoService,
+    BookmarkService,
+    AudioCommentService,
+    TimePipe,
+    ActionService,
+    ShapeService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

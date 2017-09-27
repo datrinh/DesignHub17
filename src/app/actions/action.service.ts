@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 export enum ActionMode {
   bookmark = 'bookmark',
   audio = 'audio',
-  vibration = 'vibration'
+  shape = 'shape'
 }
 
 const DEFAULT_MODE = ActionMode.bookmark;

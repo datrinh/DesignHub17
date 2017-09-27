@@ -1,3 +1,4 @@
+import { ShapeService } from '../../shared/shape/shape.service';
 import { AudioCommentService } from '../../shared/audio-comment/audio-comment.service';
 import { VideoService } from '../../video/video.service';
 import { BookmarkService } from '../../shared/bookmark/bookmark.service';
@@ -15,6 +16,7 @@ export class SidenavComponent implements OnInit {
     public bookmarks: BookmarkService,
     private video: VideoService,
     public audio: AudioCommentService,
+    public shape: ShapeService,
     private snackbar: MdSnackBar
   ) { }
 
