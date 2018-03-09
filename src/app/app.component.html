@@ -1,16 +1,16 @@
-<md-sidenav-container>
+<mat-sidenav-container>
 <dh-video></dh-video>
 
 
-  <md-sidenav #sidenav>
+  <mat-sidenav #sidenav>
     <dh-sidenav></dh-sidenav>
-  </md-sidenav>
+  </mat-sidenav>
     
   <main>
     <dh-drag2wind></dh-drag2wind>
 
     <nav id="menu">
-      <button md-icon-button class="transparent-button" (click)="sidenav.open()"><md-icon>menu</md-icon></button>
+      <button mat-icon-button class="transparent-button" (click)="sidenav.open()"><mat-icon>menu</mat-icon></button>
     </nav>
   
 
@@ -23,5 +23,5 @@
 
     <dh-action-controls id="action-selection"></dh-action-controls>
   </main>
-</md-sidenav-container>
+</mat-sidenav-container>
   

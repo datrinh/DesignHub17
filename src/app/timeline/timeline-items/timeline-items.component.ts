@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Rx';
 import { AudioComment, AudioCommentService } from '../../shared/audio-comment/audio-comment.service';
 import { Bookmark, BookmarkService } from '../../shared/bookmark/bookmark.service';
 import { Component, OnInit } from '@angular/core';
-import { MdDialog, MdSnackBar } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 
 export interface TimelineItem {
   item: Bookmark | AudioComment | Shape;
@@ -29,8 +29,8 @@ export class TimelineItemsComponent implements OnInit {
     public audio: AudioCommentService,
     private shape: ShapeService,
     private video: VideoService,
-    private dialog: MdDialog,
-    private snackbar: MdSnackBar
+    private dialog: MatDialog,
+    private snackbar: MatSnackBar
   ) { }
 
   ngOnInit() {

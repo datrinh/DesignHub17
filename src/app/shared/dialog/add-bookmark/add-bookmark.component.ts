@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MD_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'dh-add-bookmark',
@@ -11,7 +11,7 @@ export class AddBookmarkComponent implements OnInit {
   timestamp: number;
 
   constructor(
-    @Inject(MD_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
   ngOnInit() {

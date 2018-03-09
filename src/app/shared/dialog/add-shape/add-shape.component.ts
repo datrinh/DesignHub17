@@ -1,6 +1,6 @@
 import { ShapeService, SHAPE_LIST } from '../../shape/shape.service';
 import { Component, Inject, OnInit } from '@angular/core';
-import { MD_DIALOG_DATA, MdDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'dh-add-shape',
@@ -14,8 +14,8 @@ export class AddShapeComponent implements OnInit {
 
   constructor(
     private shape: ShapeService,
-    @Inject(MD_DIALOG_DATA) public data: any,
-    public dialogRef: MdDialogRef<AddShapeComponent>
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef: MatDialogRef<AddShapeComponent>
   ) { }
 
   ngOnInit() {

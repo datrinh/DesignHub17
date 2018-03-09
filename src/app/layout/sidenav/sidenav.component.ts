@@ -3,7 +3,7 @@ import { AudioCommentService } from '../../shared/audio-comment/audio-comment.se
 import { VideoService } from '../../video/video.service';
 import { BookmarkService } from '../../shared/bookmark/bookmark.service';
 import { Component, OnInit } from '@angular/core';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'dh-sidenav',
@@ -17,7 +17,7 @@ export class SidenavComponent implements OnInit {
     private video: VideoService,
     public audio: AudioCommentService,
     public shape: ShapeService,
-    private snackbar: MdSnackBar
+    private snackbar: MatSnackBar
   ) { }
 
   ngOnInit() {

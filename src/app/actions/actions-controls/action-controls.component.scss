@@ -1,13 +1,13 @@
 @import "./../../../variables.scss";
 
 .active {
-  md-icon {
+  mat-icon {
     color: $dh-orange;
   }
 }
 
 .actionSelection {
-  color: black;
+  color: rgba(0, 0, 0, 0.7);
   background-color: white;
 }
 
@@ -25,8 +25,10 @@
   // grid-area: 1 / 2;
   // justify-self: center;
   position: absolute;
-  bottom: 55px;
-  right: 55px;
+  // bottom: 55px;
+  // right: 55px;
+  bottom: 75px;
+  right: 3px;
 }
 
 #actionSelectionShape {

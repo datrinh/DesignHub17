@@ -1,20 +1,20 @@
-<h2 md-dialog-title>Muster setzen</h2>
+<h2 mat-dialog-title>Muster setzen</h2>
 
-<md-dialog-content>
-  <md-form-field>
-    <input mdInput placeholder="Titel" #title>
-    <span mdSuffix>@{{ timestamp | timePipe:'mm:ss' }}</span>
-  </md-form-field>
-  <md-list>
-    <md-grid-list cols="2" rowHeight="2:1">
-      <md-grid-tile *ngFor="let shape of shapes" (click)="select(shape)" [ngClass]="{'selected': selectedShape === shape}" class="shape-item">
-        <md-icon>{{shape.icon}}</md-icon>
-      </md-grid-tile>
-    </md-grid-list>
-  </md-list>
-</md-dialog-content>
-<md-dialog-actions>
-  <button md-button md-dialog-close>Abbrechen</button>
+<mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="Titel" #title>
+    <span matSuffix>@{{ timestamp | timePipe:'mm:ss' }}</span>
+  </mat-form-field>
+  <mat-list>
+    <mat-grid-list cols="2" rowHeight="2:1">
+      <mat-grid-tile *ngFor="let shape of shapes" (click)="select(shape)" [ngClass]="{'selected': selectedShape === shape}" class="shape-item">
+        <mat-icon>{{shape.icon}}</mat-icon>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-list>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Abbrechen</button>
   <!-- Can optionally provide a result for the closing dialog. -->
-  <button md-button (click)="onSubmit(title.value, selectedShape)" color="primary">Speichern</button>
-</md-dialog-actions>
+  <button mat-button (click)="onSubmit(title.value, selectedShape)" color="primary">Speichern</button>
+</mat-dialog-actions>

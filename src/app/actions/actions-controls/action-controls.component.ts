@@ -8,7 +8,7 @@ import { AddBookmarkComponent } from '../../shared/dialog/add-bookmark/add-bookm
 import { VideoService } from '../../video/video.service';
 import { BookmarkService } from '../../shared/bookmark/bookmark.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MdDialog, MdSnackBar, MdTooltip } from '@angular/material';
+import { MatDialog, MatSnackBar, MatTooltip } from '@angular/material';
 
 const DEFAULT_TOOLTIP_LABEL = 'Halten zum Aufnehmen';
 
@@ -26,7 +26,7 @@ export class ActionControlsComponent implements OnInit {
   mode: string;
   recordIcon = RECORD_ICON.OFF;
   tooltipLabel = DEFAULT_TOOLTIP_LABEL;
-  @ViewChild('tooltip') tooltip: MdTooltip;
+  @ViewChild('tooltip') tooltip: MatTooltip;
   // isPressing = false;
   pressInterval;
   audioDuration = 0;
@@ -35,8 +35,8 @@ export class ActionControlsComponent implements OnInit {
     private bookmark: BookmarkService,
     private video: VideoService,
     private audio: AudioCommentService,
-    private dialog: MdDialog,
-    private snackbar: MdSnackBar,
+    private dialog: MatDialog,
+    private snackbar: MatSnackBar,
     private timePipe: TimePipe,
     private action: ActionService,
     private shape: ShapeService

@@ -1,6 +1,6 @@
 import { AudioComment, AudioCommentService } from '../../audio-comment/audio-comment.service';
 import { Component, Inject, OnInit } from '@angular/core';
-import { MD_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'dh-edit-audio-comment',
@@ -11,7 +11,7 @@ export class EditAudioCommentComponent implements OnInit {
   item;
 
   constructor(
-    @Inject(MD_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private audio: AudioCommentService
   ) { }
 

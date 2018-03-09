@@ -1,21 +1,21 @@
-<h2 md-dialog-title>Audiokommentar aufnehmen</h2>
-<md-dialog-content>
-  <button *ngIf="status === 'start'" md-button (click)="startRec()"><md-icon>mic</md-icon> Aufnehmen</button>
+<h2 mat-dialog-title>Audiokommentar aufnehmen</h2>
+<mat-dialog-content>
+  <button *ngIf="status === 'start'" mat-button (click)="startRec()"><mat-icon>mic</mat-icon> Aufnehmen</button>
 
-  <button *ngIf="status === 'recording'" md-button (click)="stopRec()"><md-icon>stop</md-icon> Stoppen</button>
+  <button *ngIf="status === 'recording'" mat-button (click)="stopRec()"><mat-icon>stop</mat-icon> Stoppen</button>
 
-  <button *ngIf="status === 'done'" md-button (click)="play()"><md-icon>play_arrow</md-icon> Abspielen</button>
+  <button *ngIf="status === 'done'" mat-button (click)="play()"><mat-icon>play_arrow</mat-icon> Abspielen</button>
 
   <div *ngIf="status === 'recording'" style="display:inline-block;">
-    <!-- <md-icon>fiber_manual_record</md-icon> -->
-    <md-spinner class="rec-spinner"></md-spinner> <span>{{ duration | timePipe:'mm:ss' }}</span>
+    <!-- <mat-icon>fiber_manual_record</mat-icon> -->
+    <mat-spinner class="rec-spinner"></mat-spinner> <span>{{ duration | timePipe:'mm:ss' }}</span>
   </div>
 
   <!-- <span>Zeitpunkt: {{ timestamp | timePipe:'mm:ss' }}</span> -->
   
-</md-dialog-content>
-<md-dialog-actions>
-  <button md-button [md-dialog-close]="false">Abbrechen</button>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="false">Abbrechen</button>
   <!-- Can optionally provide a result for the closing dialog. -->
-  <button md-button [disabled]="!(status === 'done')" [md-dialog-close]="true" color="primary">Speichern</button>
-</md-dialog-actions>
+  <button mat-button [disabled]="!(status === 'done')" [mat-dialog-close]="true" color="primary">Speichern</button>
+</mat-dialog-actions>

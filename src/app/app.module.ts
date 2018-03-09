@@ -7,21 +7,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  MdButtonModule,
-  MdButtonToggleModule,
-  MdIconModule,
-  MdProgressBarModule,
-  MdSliderModule,
-  MdSidenavModule,
-  MdDialogModule,
-  MdInputModule,
-  MdSnackBarModule,
-  MdListModule,
-  MdTooltipModule,
-  MdProgressSpinnerModule,
-  MdGridListModule
-} from '@angular/material';
 import 'hammerjs';
 // import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -39,22 +24,35 @@ import { TimelineItemsComponent } from './timeline/timeline-items/timeline-items
 import { EditBookmarkComponent } from './shared/dialog/edit-bookmark/edit-bookmark.component';
 import { EditAudioCommentComponent } from './shared/dialog/edit-audio-comment/edit-audio-comment.component';
 import { AddShapeComponent } from './shared/dialog/add-shape/add-shape.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatListModule } from '@angular/material/list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 // add all need Material modules here
 const MaterialModules = [
-  MdTooltipModule,
-  MdButtonModule,
-  MdButtonToggleModule,
-  MdIconModule,
-  MdProgressBarModule,
-  MdSliderModule,
-  MdSidenavModule,
-  MdDialogModule,
-  MdInputModule,
-  MdSnackBarModule,
-  MdListModule,
-  MdProgressSpinnerModule,
-  MdGridListModule
+  MatTooltipModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatIconModule,
+  MatProgressBarModule,
+  MatSliderModule,
+  MatSidenavModule,
+  MatDialogModule,
+  MatInputModule,
+  MatSnackBarModule,
+  MatListModule,
+  MatProgressSpinnerModule,
+  MatGridListModule
 ];
 
 @NgModule({
@@ -99,4 +97,4 @@ const MaterialModules = [
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

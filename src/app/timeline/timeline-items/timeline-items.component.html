@@ -1,6 +1,6 @@
-<!-- <div class="wrapper"> -->
+<!-- <mativ class="wrapper"> -->
   <ng-container *ngFor="let item of items$ | async">
-    <!-- <div class="item" [ngStyle]="{'transform': 'translate(' + item.position + '%)'}"><md-icon>bookmark</md-icon></div> -->
-    <button md-icon-button (click)="onClick(item)" class="item" [ngStyle]="{'left.%': item.position, 'margin-left': '-12px' }"><md-icon>{{ item.icon }}</md-icon></button>
+    <!-- <mativ class="item" [ngStyle]="{'transform': 'translate(' + item.position + '%)'}"><mat-icon>bookmark</mat-icon></mativ> -->
+    <button mat-icon-button (click)="onClick(item)" class="item" [ngStyle]="{'left.%': item.position, 'margin-left': '-12px' }"><mat-icon>{{ item.icon }}</mat-icon></button>
   </ng-container>
-<!-- </div> -->
+<!-- </mativ> -->

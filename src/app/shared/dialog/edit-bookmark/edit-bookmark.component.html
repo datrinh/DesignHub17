@@ -1,14 +1,14 @@
-<h2 md-dialog-title>{{ item.title }} bearbeiten</h2>
-<md-dialog-content>
-  <md-form-field>
-    <input mdInput placeholder="Titel" #title [value]="item.title">
-    <span mdSuffix>@{{ item.timestamp | timePipe:'mm:ss' }}</span>
-  </md-form-field>
+<h2 mat-dialog-title>{{ item.title }} bearbeiten</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="Titel" #title [value]="item.title">
+    <span matSuffix>@{{ item.timestamp | timePipe:'mm:ss' }}</span>
+  </mat-form-field>
 
-  <button md-button (click)="onDelete(item)" md-dialog-close="'delete'"><md-icon>delete</md-icon> Löschen</button>
-</md-dialog-content>
-<md-dialog-actions>
-  <button md-button md-dialog-close>Abbrechen</button>
+  <button mat-button (click)="onDelete(item)" mat-dialog-close="'delete'"><mat-icon>delete</mat-icon> Löschen</button>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Abbrechen</button>
   <!-- Can optionally provide a result for the closing dialog. -->
-  <button md-button [md-dialog-close]="title.value" color="primary">Speichern</button>
-</md-dialog-actions>
+  <button mat-button [mat-dialog-close]="title.value" color="primary">Speichern</button>
+</mat-dialog-actions>

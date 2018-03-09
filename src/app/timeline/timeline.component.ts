@@ -1,6 +1,6 @@
 import { VideoService } from '../video/video.service';
 import { Component, OnInit } from '@angular/core';
-import { MdSliderChange } from '@angular/material';
+import { MatSliderChange } from '@angular/material';
 
 @Component({
   selector: 'dh-timeline',
@@ -14,7 +14,7 @@ export class TimelineComponent implements OnInit {
   ngOnInit() {
   }
 
-  setCurrentTime(e: MdSliderChange) {
+  setCurrentTime(e: MatSliderChange) {
     this.videoService.player.currentTime = e.value;
   }
 }

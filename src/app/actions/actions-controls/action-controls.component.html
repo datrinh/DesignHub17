@@ -8,23 +8,23 @@
     [ngClass]="{'active': mode === 'audio'}"
     id="actionSelectionComment"
     class="actionSelection"
-    md-mini-fab><md-icon>mic</md-icon>
+    mat-mini-fab><mat-icon>mic</mat-icon>
 </button>
 
-<button
+<!-- <button
     (click)="setMode('bookmark')"
     [ngClass]="{'active': mode === 'bookmark'}"
     id="actionSelectionBookmark"
     class="actionSelection"
-    md-mini-fab><md-icon>bookmark_border</md-icon>
-</button>
+    mat-mini-fab><mat-icon>bookmark_border</mat-icon>
+</button> -->
     
 <button
     (click)="setMode('shape')"
     [ngClass]="{'active': mode === 'shape'}"
     id="actionSelectionShape"
     class="actionSelection"
-    md-mini-fab><md-icon>hdr_weak</md-icon>
+    mat-mini-fab><mat-icon>hdr_weak</mat-icon>
 </button>
 
 <!-- Action Button -->
@@ -34,30 +34,30 @@
     (press)="onPress($event)"
     (pressup)="onPressUp($event)"
     (tap)="onTap()"
-    #tooltip="mdTooltip"
-    [mdTooltip]="tooltipLabel"
+    #tooltip="matTooltip"
+    [matTooltip]="tooltipLabel"
     id="actionSelection"
     class="actionSelection"
-    md-fab><md-icon>add</md-icon>
+    mat-fab><mat-icon>add</mat-icon>
 </button> -->
 
 <button
     (click)="addAudio()"
     *ngIf="mode === 'audio'"
     id="actionButton"
-    md-fab><md-icon>add</md-icon>
+    mat-fab><mat-icon>add</mat-icon>
 </button>
 
 <button
     (click)="addBookmark()"
     *ngIf="mode === 'bookmark'"
     id="actionButton"
-    md-fab><md-icon>add</md-icon>
+    mat-fab><mat-icon>add</mat-icon>
 </button>
 
 <button
     (click)="addShape()"
     *ngIf="mode === 'shape'"
     id="actionButton"
-    md-fab><md-icon>add</md-icon>
+    mat-fab><mat-icon>add</mat-icon>
 </button>

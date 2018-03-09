@@ -1,14 +1,14 @@
-<h2 md-dialog-title>Lesezeichen setzen</h2>
+<h2 mat-dialog-title>Lesezeichen setzen</h2>
 <form>
-  <md-dialog-content>
-    <md-form-field>
-      <input mdInput placeholder="Titel" #title>
-      <span mdSuffix>@{{ timestamp | timePipe:'mm:ss' }}</span>
-    </md-form-field>
-  </md-dialog-content>
-  <md-dialog-actions>
-    <button md-button md-dialog-close>Abbrechen</button>
+  <mat-dialog-content>
+    <mat-form-field>
+      <input matInput placeholder="Titel" #title>
+      <span matSuffix>@{{ timestamp | timePipe:'mm:ss' }}</span>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Abbrechen</button>
     <!-- Can optionally provide a result for the closing dialog. -->
-    <button md-button [md-dialog-close]="title" color="primary">Speichern</button>
-  </md-dialog-actions>
+    <button mat-button [mat-dialog-close]="title" color="primary">Speichern</button>
+  </mat-dialog-actions>
 </form>
