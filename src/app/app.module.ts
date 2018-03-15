@@ -39,6 +39,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { AddAnnotationComponent } from './shared/dialog/add-annotation/add-annotation.component';
 import { AnnotationService } from './shared/annotation/annotation.service';
+import { MinimapComponent } from './minimap/minimap.component';
 
 // add all need Material modules here
 const MaterialModules = [
@@ -74,7 +75,8 @@ const MaterialModules = [
     EditBookmarkComponent,
     EditAudioCommentComponent,
     AddShapeComponent,
-    AddAnnotationComponent
+    AddAnnotationComponent,
+    MinimapComponent
   ],
   imports: [
     BrowserModule,

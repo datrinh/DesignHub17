@@ -12,13 +12,13 @@ export class VideoComponent implements OnInit {
   minimapSrc = 'https://media.w3.org/2010/05/bunny/movie.mp4';
 
   @ViewChild('mainVideo') video;
-  @ViewChild('minimap') minimap;
+  // @ViewChild('minimap') minimap;
 
   constructor(public videoService: VideoService) { }
 
   ngOnInit() {
     this.videoService.player = this.video.nativeElement;
-    this.videoService.minimap = this.minimap.nativeElement;
+    // this.videoService.minimap = this.minimap.nativeElement;
   }
 
   onTimeUpdate(e) {
