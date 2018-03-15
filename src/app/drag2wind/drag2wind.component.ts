@@ -27,8 +27,7 @@ export class Drag2windComponent implements OnInit {
   }
 
   onPanStart(e) {
-    this.video.player.pause();
-    this.video.minimap.pause();
+    this.video.pauseVideo();
     this.startX = e.center.x;
     this.startY = e.center.y;
     this.startTime = this.video.currentTime;

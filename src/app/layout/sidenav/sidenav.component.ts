@@ -27,7 +27,7 @@ export class SidenavComponent implements OnInit {
 
   jumpToTimestamp(timestamp: number) {
     this.video.player.currentTime = timestamp;
-    this.video.player.pause();
+    this.video.pauseVideo();
   }
 
   deleteBookmark(id: number) {

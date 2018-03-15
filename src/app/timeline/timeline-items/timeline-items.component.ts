@@ -56,7 +56,7 @@ export class TimelineItemsComponent implements OnInit {
   }
 
   onClick(item: TimelineItem) {
-    this.video.player.pause();
+    this.video.pauseVideo();
     let component;
     switch (item.item.type) {
       case 'bookmark':

@@ -66,6 +66,11 @@ export class VideoService {
     this.minimap.currentTime = this.minimap.currentTime + multi / FPS;
   }
 
+  pauseVideo() {
+    this.player.pause();
+    this.minimap.pause();
+  }
+
   // frameForward(amount: number) {
   //   this.player.currentTime = this.player.currentTime + 1 / FPS;
   // }

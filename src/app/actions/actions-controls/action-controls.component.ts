@@ -164,7 +164,7 @@ export class ActionControlsComponent implements OnInit {
 
   addAnnotation() {
     const timestamp = this.video.currentTime;
-    this.video.player.pause();
+    this.video.pauseVideo();
     const annotationDialog = this.dialog.open(AddAnnotationComponent, {
       data: {
         timestamp: timestamp
