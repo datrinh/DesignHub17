@@ -16,5 +16,6 @@ export class TimelineComponent implements OnInit {
 
   setCurrentTime(e: MatSliderChange) {
     this.videoService.player.currentTime = e.value;
+    this.videoService.minimap.currentTime = e.value;
   }
 }

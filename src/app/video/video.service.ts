@@ -3,11 +3,13 @@ import { Injectable } from '@angular/core';
 
 const FPS = 60;
 const AMOUNT_FRAMES_SKIPPED = 1;
+const MINIMAP_ACTIVE = true;
 
 @Injectable()
 export class VideoService {
 
   player: HTMLVideoElement;
+  minimap: HTMLVideoElement;
 
   get currentTime(): number {
     return this.player.currentTime;
@@ -42,8 +44,10 @@ export class VideoService {
   playOrPause() {
     if (this.isPlaying()) {
       this.player.pause();
+      this.minimap.pause();
     } else {
       this.player.play();
+      this.minimap.play();
     }
   }
 
@@ -59,6 +63,7 @@ export class VideoService {
     // could alter multi based on amount of direction
     const multi = direction > 0 ? AMOUNT_FRAMES_SKIPPED : -AMOUNT_FRAMES_SKIPPED;
     this.player.currentTime = this.player.currentTime + multi / FPS;
+    this.minimap.currentTime = this.minimap.currentTime + multi / FPS;
   }
 
   // frameForward(amount: number) {

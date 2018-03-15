@@ -5,7 +5,12 @@
   (timeupdate)="onTimeUpdate($event)"
   (durationchange)="onDurationChange($event)"
   preload="auto"
-  #video id="video">
-  <source [src]="source" type="video/mp4" />
+  #mainVideo id="video">
+  <source [src]="mainSrc" type="video/mp4" />
+</video>
+
+<video
+  #minimap id="minimap">
+  <source [src]="minimapSrc" type="video/mp4" />
 </video>
 <!-- <dh-controls></dh-controls> -->

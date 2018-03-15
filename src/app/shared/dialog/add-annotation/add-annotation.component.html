@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>Annotation setzen</h2>
+
+<mat-dialog-content>
+  <mat-form-field>
+    <!-- <input *ngIf="recStatus === 'start'" matInput placeholder="Titel" #title> -->
+    <input matInput value="{{duration | timePipe:'mm:ss'}}" disabled #title>
+    <span matPrefix>
+        <!-- <button *ngIf="recStatus === 'recording'" mat-icon-button><mat-icon class="recording">mic</mat-icon></button> -->
+        <mat-spinner [diameter]="16" [strokeWidth]="2" *ngIf="recStatus === 'recording'"></mat-spinner>   
+    </span>
+    <span matSuffix>
+      <button *ngIf="recStatus === 'start'" mat-icon-button (click)="startRec()"><mat-icon>mic</mat-icon></button>
+      <button *ngIf="recStatus === 'recording'" mat-icon-button (click)="stopRec()"><mat-icon>stop</mat-icon></button>
+      <button *ngIf="recStatus === 'done'" mat-icon-button (click)="play()"><mat-icon>play_arrow</mat-icon></button>
+      <!-- <button *ngIf="recStatus === 'done' && !audioPaused" mat-icon-button (click)="stop()"><mat-icon>stop</mat-icon></button> -->
+      <!-- <button *ngIf="recStatus === 'start'" mat-icon-button (click)="startRec()"><mat-icon>mic</mat-icon></button> -->
+    </span>
+  </mat-form-field>
+  <mat-list>
+    <mat-grid-list cols="3" rowHeight="2:1">
+      <mat-grid-tile *ngFor="let shape of shapes" (click)="select(shape)" [ngClass]="{'selected': selectedShape === shape}" class="shape-item">
+        <mat-icon>{{shape.icon}}</mat-icon>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-list>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Abbrechen</button>
+  <!-- Can optionally provide a result for the closing dialog. -->
+  <button mat-button (click)="onSubmit(title.value, selectedShape)" color="primary">Speichern</button>
+</mat-dialog-actions>

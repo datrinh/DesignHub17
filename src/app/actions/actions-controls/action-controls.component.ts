@@ -9,6 +9,7 @@ import { VideoService } from '../../video/video.service';
 import { BookmarkService } from '../../shared/bookmark/bookmark.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatSnackBar, MatTooltip } from '@angular/material';
+import { AddAnnotationComponent } from '../../shared/dialog/add-annotation/add-annotation.component';
 
 const DEFAULT_TOOLTIP_LABEL = 'Halten zum Aufnehmen';
 
@@ -157,6 +158,27 @@ export class ActionControlsComponent implements OnInit {
         this.snackbar.open('Muster wurde gespeichert.', null, {
           duration: 2000
         });
+      }
+    });
+  }
+
+  addAnnotation() {
+    const timestamp = this.video.currentTime;
+    this.video.player.pause();
+    const annotationDialog = this.dialog.open(AddAnnotationComponent, {
+      data: {
+        timestamp: timestamp
+      }
+    });
+    annotationDialog.afterClosed().subscribe(res => {
+      if (res) {
+        this.audio.saveRecord();
+        console.log(res);
+        this.snackbar.open('Annotation wurde gespeichert.', null, {
+          duration: 2000
+        });
+      } else {
+        this.audio.reset();
       }
     });
   }

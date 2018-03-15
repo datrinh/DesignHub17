@@ -37,6 +37,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { AddAnnotationComponent } from './shared/dialog/add-annotation/add-annotation.component';
+import { AnnotationService } from './shared/annotation/annotation.service';
 
 // add all need Material modules here
 const MaterialModules = [
@@ -71,7 +73,8 @@ const MaterialModules = [
     TimelineItemsComponent,
     EditBookmarkComponent,
     EditAudioCommentComponent,
-    AddShapeComponent
+    AddShapeComponent,
+    AddAnnotationComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +88,8 @@ const MaterialModules = [
     AddAudioCommentComponent,
     EditAudioCommentComponent,
     EditBookmarkComponent,
-    AddShapeComponent
+    AddShapeComponent,
+    AddAnnotationComponent
   ],
   providers: [
     VideoService,
@@ -93,7 +97,8 @@ const MaterialModules = [
     AudioCommentService,
     TimePipe,
     ActionService,
-    ShapeService
+    ShapeService,
+    AnnotationService
   ],
   bootstrap: [AppComponent]
 })

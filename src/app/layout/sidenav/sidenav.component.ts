@@ -4,6 +4,7 @@ import { VideoService } from '../../video/video.service';
 import { BookmarkService } from '../../shared/bookmark/bookmark.service';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
+import { AnnotationService } from '../../shared/annotation/annotation.service';
 
 @Component({
   selector: 'dh-sidenav',
@@ -17,6 +18,7 @@ export class SidenavComponent implements OnInit {
     private video: VideoService,
     public audio: AudioCommentService,
     public shape: ShapeService,
+    private annotation: AnnotationService,
     private snackbar: MatSnackBar
   ) { }
 

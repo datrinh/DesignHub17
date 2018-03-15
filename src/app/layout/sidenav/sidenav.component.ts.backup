@@ -1,0 +1,40 @@
+<mat-list>
+  <h3 mat-subheader>Lesezeichen</h3>
+  <mat-list-item
+    (click)="jumpToTimestamp(bookmark.timestamp)"
+    *ngFor="let bookmark of bookmarks.bookmarks$ | async"
+    class="clickable">
+    <!-- <mat-icon mat-list-icon>bookmark</mat-icon> -->
+    <h4 mat-line>{{bookmark.title}}</h4>
+    <button (click)="deleteBookmark(bookmark.id)" mat-icon-button><mat-icon mat-list-icon>delete</mat-icon></button>    
+    <p mat-line> {{bookmark.timestamp | timePipe:'mm:ss'}} </p>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <h3 mat-subheader>Muster</h3>
+  <mat-list-item
+    (click)="jumpToTimestamp(shape.timestamp)"
+    *ngFor="let shape of shape.shapes$ | async"
+    class="clickable">
+    <!-- <button (click)="deleteRecord(shape.id)" mat-icon-button><mat-icon mat-list-icon>delete</mat-icon></button> -->
+    <p mat-line><mat-icon>{{shape.icon}}</mat-icon> {{shape.timestamp | timePipe:'mm:ss'}} </p>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <h3 mat-subheader>Kommentare</h3>
+  <mat-list-item
+    (click)="jumpToTimestamp(comment.timestamp)"
+    *ngFor="let comment of audio.audioComments$ | async"
+    class="clickable">
+    <button (click)="audio.playRecord(comment.audio.src)" mat-icon-button><mat-icon mat-list-icon>play_arrow</mat-icon></button>
+    <button (click)="deleteRecord(comment.id)" mat-icon-button><mat-icon mat-list-icon>delete</mat-icon></button>
+    <p mat-line> {{comment.timestamp | timePipe:'mm:ss'}} </p>
+  </mat-list-item>
+  <!-- <mat-divider></mat-divider>
+  <mat-list-item>
+    <mat-icon mat-list-icon>settings</mat-icon>  
+    <h4 mat-line>Einstellungen</h4>
+  </mat-list-item>
+  <mat-list-item>
+      <mat-icon mat-list-icon>exit_to_app</mat-icon>  
+      <h4 mat-line>Zurück</h4>
+    </mat-list-item>   -->
+</mat-list>

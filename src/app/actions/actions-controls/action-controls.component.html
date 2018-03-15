@@ -3,13 +3,13 @@
 <!-- TODO: BUG: onPressUp doesnt fire when moving a little after press since pan event fire instead -->
 
 <!-- Mode Switch Buttons -->
-<button
+<!-- <button
     (click)="setMode('audio')"
     [ngClass]="{'active': mode === 'audio'}"
     id="actionSelectionComment"
     class="actionSelection"
     mat-mini-fab><mat-icon>mic</mat-icon>
-</button>
+</button> -->
 
 <!-- <button
     (click)="setMode('bookmark')"
@@ -19,13 +19,13 @@
     mat-mini-fab><mat-icon>bookmark_border</mat-icon>
 </button> -->
     
-<button
+<!-- <button
     (click)="setMode('shape')"
     [ngClass]="{'active': mode === 'shape'}"
     id="actionSelectionShape"
     class="actionSelection"
     mat-mini-fab><mat-icon>hdr_weak</mat-icon>
-</button>
+</button> -->
 
 <!-- Action Button -->
 <!-- <button
@@ -43,21 +43,25 @@
 
 <button
     (click)="addAudio()"
-    *ngIf="mode === 'audio'"
-    id="actionButton"
-    mat-fab><mat-icon>add</mat-icon>
+    mat-fab><mat-icon>mic</mat-icon>
 </button>
 
-<button
+<!-- <button
     (click)="addBookmark()"
     *ngIf="mode === 'bookmark'"
     id="actionButton"
     mat-fab><mat-icon>add</mat-icon>
-</button>
+</button> -->
 
-<button
+<!-- <button
     (click)="addShape()"
     *ngIf="mode === 'shape'"
+    id="actionButton"
+    mat-fab><mat-icon>add</mat-icon>
+</button> -->
+
+<button
+    (click)="addAnnotation()"
     id="actionButton"
     mat-fab><mat-icon>add</mat-icon>
 </button>

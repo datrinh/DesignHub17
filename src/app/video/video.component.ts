@@ -8,15 +8,17 @@ import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class VideoComponent implements OnInit {
-  source = 'assets/video.mp4';
-  // source = 'https://media.w3.org/2010/05/bunny/movie.mp4';
+  mainSrc = 'assets/video.mp4';
+  minimapSrc = 'https://media.w3.org/2010/05/bunny/movie.mp4';
 
-  @ViewChild('video') video;
+  @ViewChild('mainVideo') video;
+  @ViewChild('minimap') minimap;
 
   constructor(public videoService: VideoService) { }
 
   ngOnInit() {
     this.videoService.player = this.video.nativeElement;
+    this.videoService.minimap = this.minimap.nativeElement;
   }
 
   onTimeUpdate(e) {

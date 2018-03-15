@@ -1,0 +1,15 @@
+@import './../../../../variables.scss';
+
+.shape-item {
+    cursor: pointer;
+    &.selected {
+        background-color: lightgrey;
+        mat-icon {
+            color: $dh-orange;
+        }
+    }
+}
+
+.recording {
+    color: $dh-orange;
+}

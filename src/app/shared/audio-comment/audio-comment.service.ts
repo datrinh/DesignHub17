@@ -1,4 +1,4 @@
-import { BehaviorSubject, Observable } from 'rxjs/Rx';
+import { BehaviorSubject, Observable, Subject } from 'rxjs/Rx';
 import { VideoService } from '../../video/video.service';
 import { Injectable } from '@angular/core';
 
@@ -23,7 +23,7 @@ export class AudioCommentService {
   private status: BehaviorSubject<string> = new BehaviorSubject<string>('start');
   status$: Observable<string> = this.status.asObservable();
 
-  private tempRecordSub: BehaviorSubject<AudioComment> = new BehaviorSubject<AudioComment>(this.tempRecord);
+  private tempRecordSub: Subject<AudioComment> = new Subject<AudioComment>();
   tempRecordSub$: Observable<AudioComment> = this.tempRecordSub.asObservable();
 
   private audioComments: BehaviorSubject<AudioComment[]> = new BehaviorSubject<AudioComment[]>(this.audioStore);
@@ -104,7 +104,12 @@ export class AudioCommentService {
   }
 
   playTempRecord() {
-    this.playRecord(this.tempRecord.audio.src);
+    this.tempRecord.audio.play();
+  }
+
+  stopTempRecord() {
+    this.tempRecord.audio.pause();
+    this.tempRecord.audio.currentTime = 0;
   }
 
   reset() {
