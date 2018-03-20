@@ -13,3 +13,18 @@
 .recording {
     color: $dh-orange;
 }
+
+mat-dialog-content {
+    position: relative;
+}
+
+#close {
+    position: relative;
+    top: -10px;
+    right: -86%;
+}
+
+#submit {
+    right: -85%;
+    // bottom: 0;
+}

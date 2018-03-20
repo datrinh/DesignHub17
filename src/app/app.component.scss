@@ -14,7 +14,10 @@ dh-video {
 }
 
 dh-minimap {
-  grid-area: 2 / -3;
+  // grid-area: 2 / -3;
+  grid-row-start: 2;
+  grid-row-end: 4;
+  grid-column: 11 / 14;
 }
 
 main {
@@ -53,12 +56,12 @@ main {
 
 #timeline {
 	// background-color: rgba(97, 135, 168, 0.5);
-	grid-area: -3 / 3 / -1 / -4;
+	grid-area: -3 / 3 / -2 / -3;
 }
 
 #action-selection {
 	// background-color: rgba(213, 208, 173, 0.5);
-  grid-area: -4 / -4 / -2 / -2;
+  grid-area: -3 / -3 / -2 / -2;
 
   // display: grid;
   // grid: repeat(2, 1fr) / repeat(2, 1fr);
