@@ -2,4 +2,28 @@ video {
     width: 100%;
     height: 100%;
     opacity: 0.5;
+    object-fit: fill;
 }
+
+.corners {
+    height: 100%;
+    // width: 100%;
+}
+
+.minimap-wrapper {
+    position:relative;
+    height: 100%;
+    padding: 1px;
+}
+.minimap-wrapper:before, .minimap-wrapper:after, .minimap-wrapper>:first-child:before, .minimap-wrapper>:first-child:after {
+    position:absolute;
+    width: 15px;
+    height: 15px;
+    border-color:rgba(255, 255, 255, 0.5); /* or whatever colour */
+    border-style:solid; /* or whatever style */
+    content: ' ';
+}
+.minimap-wrapper:before {top:0;left:0;border-width: 1px 0 0 1px}
+.minimap-wrapper:after {top:0;right:0;border-width: 1px 1px 0 0}
+.minimap-wrapper > :first-child:before {bottom:0;right:0;border-width: 0 1px 1px 0}
+.minimap-wrapper > :first-child:after {bottom:0;left:0;border-width: 0 0 1px 1px}

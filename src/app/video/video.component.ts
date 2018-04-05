@@ -9,7 +9,7 @@ import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/
 })
 export class VideoComponent implements OnInit {
   mainSrc = 'assets/video.mp4';
-  minimapSrc = 'https://media.w3.org/2010/05/bunny/movie.mp4';
+  // minimapSrc = 'https://media.w3.org/2010/05/bunny/movie.mp4';
 
   @ViewChild('mainVideo') video;
   // @ViewChild('minimap') minimap;

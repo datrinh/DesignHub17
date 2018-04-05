@@ -7,7 +7,7 @@ import { VideoService } from '../video/video.service';
   styleUrls: ['./minimap.component.scss']
 })
 export class MinimapComponent implements OnInit {
-  minimapSrc = 'https://media.w3.org/2010/05/bunny/movie.mp4';
+  minimapSrc = 'assets/minimap.mp4';
 
   @ViewChild('minimap') minimap;
 
