@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { AudioComment } from '../audio-comment/audio-comment.service';
 
 export interface Annotation {
-  // id: number;
+  id: number;
   audio?: AudioComment;
   title?: string;
   shape?: string;
@@ -32,13 +32,18 @@ export class AnnotationService {
       icon = 'add'; // needs work
     }
     this.annotationStore.push({
-      // id: this.annotationStore.length,
+      id: this.annotationStore.length,
       timestamp: annotation.timestamp,
       title: annotation.title,
       icon: icon
     });
     this.annotations.next(this.annotationStore);
     console.log(this.annotationStore);
+  }
+
+  deleteAnnotation(id: number) {
+    this.annotationStore = this.annotationStore.filter((item) => id !== item.id);
+    this.annotations.next(this.annotationStore);
   }
 
 }

@@ -1,12 +1,12 @@
 <mat-list>
-  <h3 mat-subheader>Lesezeichen</h3>
+  <h3 mat-subheader>Annotationen</h3>
   <mat-list-item
-    (click)="jumpToTimestamp(bookmark.timestamp)"
-    *ngFor="let bookmark of bookmarks.bookmarks$ | async"
+    *ngFor="let annotation of annotations.annotations$ | async"
+    (click)="jumpToTimestamp(annotation.timestamp)"
     class="clickable">
     <!-- <mat-icon mat-list-icon>bookmark</mat-icon> -->
-    <h4 mat-line>{{bookmark.title}}</h4>
-    <button (click)="deleteBookmark(bookmark.id)" mat-icon-button><mat-icon mat-list-icon>delete</mat-icon></button>    
-    <p mat-line> {{bookmark.timestamp | timePipe:'mm:ss'}} </p>
+    <h4 mat-line>{{annotation.title}}</h4>
+    <button (click)="deleteAnnotation(annotation.id)" mat-icon-button><mat-icon mat-list-icon>delete</mat-icon></button>    
+    <p mat-line> {{annotation.timestamp | timePipe:'mm:ss'}} </p>
   </mat-list-item>
 </mat-list>

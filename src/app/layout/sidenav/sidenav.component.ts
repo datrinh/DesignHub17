@@ -14,6 +14,7 @@ import { AnnotationService } from '../../shared/annotation/annotation.service';
 export class SidenavComponent implements OnInit {
 
   constructor(
+    public annotations: AnnotationService,
     public bookmarks: BookmarkService,
     private video: VideoService,
     public audio: AudioCommentService,
@@ -30,14 +31,19 @@ export class SidenavComponent implements OnInit {
     this.video.pauseVideo();
   }
 
-  deleteBookmark(id: number) {
-    this.bookmarks.deleteBookmark(id);
-    this.snackbar.open('Lesezeichen wurde gelöscht.', null, { duration: 2000 });
+  deleteAnnotation(id: number) {
+    this.annotations.deleteAnnotation(id);
+    this.snackbar.open('Annotation wurde gelöscht.', null, { duration: 2000 });
   }
 
-  deleteRecord(id: number) {
-    this.audio.deleteRecord(id);
-    this.snackbar.open('Kommentar wurde gelöscht.', null, { duration: 2000 });
-  }
+  // deleteBookmark(id: number) {
+  //   this.bookmarks.deleteBookmark(id);
+  //   this.snackbar.open('Lesezeichen wurde gelöscht.', null, { duration: 2000 });
+  // }
+
+  // deleteRecord(id: number) {
+  //   this.audio.deleteRecord(id);
+  //   this.snackbar.open('Kommentar wurde gelöscht.', null, { duration: 2000 });
+  // }
 
 }
