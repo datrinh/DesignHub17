@@ -10,6 +10,7 @@ import { BookmarkService } from '../../shared/bookmark/bookmark.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatSnackBar, MatTooltip } from '@angular/material';
 import { AddAnnotationComponent } from '../../shared/dialog/add-annotation/add-annotation.component';
+import { AnnotationService } from '../../shared/annotation/annotation.service';
 
 const DEFAULT_TOOLTIP_LABEL = 'Halten zum Aufnehmen';
 
@@ -33,6 +34,7 @@ export class ActionControlsComponent implements OnInit {
   audioDuration = 0;
 
   constructor(
+    private annotation: AnnotationService,
     private bookmark: BookmarkService,
     private video: VideoService,
     private audio: AudioCommentService,
@@ -54,22 +56,22 @@ export class ActionControlsComponent implements OnInit {
     this.action.setMode(mode);
   }
 
-  addBookmark() {
-    this.video.player.pause();
-    const bookmarkDialog = this.dialog.open(AddBookmarkComponent, {
-      data: {
-        timestamp: this.video.currentTime
-      }
-    });
-    bookmarkDialog.afterClosed().subscribe(res => {
-      if (res) {
-        this.bookmark.createBookmark(this.video.currentTime, res.value);
-        this.snackbar.open(`${res.value} wurde gespeichert.`, null, {
-          duration: 2000
-        });
-      }
-    });
-  }
+  // addBookmark() {
+  //   this.video.player.pause();
+  //   const bookmarkDialog = this.dialog.open(AddBookmarkComponent, {
+  //     data: {
+  //       timestamp: this.video.currentTime
+  //     }
+  //   });
+  //   bookmarkDialog.afterClosed().subscribe(res => {
+  //     if (res) {
+  //       this.bookmark.createBookmark(this.video.currentTime, res.value);
+  //       this.snackbar.open(`${res.value} wurde gespeichert.`, null, {
+  //         duration: 2000
+  //       });
+  //     }
+  //   });
+  // }
 
   // startRecording() {
   //   console.log('recording...');
@@ -173,6 +175,11 @@ export class ActionControlsComponent implements OnInit {
     annotationDialog.afterClosed().subscribe(res => {
       if (res) {
         this.audio.saveRecord();
+        this.annotation.createAnnotation({
+          timestamp: this.video.currentTime,
+          shape: res.icon,
+          title: res.title
+        });
         console.log(res);
         this.snackbar.open('Annotation wurde gespeichert.', null, {
           duration: 2000

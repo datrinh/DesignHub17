@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { SHAPE_LIST } from '../../shape/shape.service';
 import { AudioCommentService } from '../../audio-comment/audio-comment.service';
+import { AnnotationService } from '../../annotation/annotation.service';
 
 @Component({
   selector: 'dh-add-annotation',
@@ -21,6 +22,7 @@ export class AddAnnotationComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
+    private annotation: AnnotationService,
     private audio: AudioCommentService,
     public dialogRef: MatDialogRef<AddAnnotationComponent>
   ) { }

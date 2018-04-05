@@ -7,11 +7,12 @@ import { AudioComment, AudioCommentService } from '../../shared/audio-comment/au
 import { Bookmark, BookmarkService } from '../../shared/bookmark/bookmark.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatSnackBar } from '@angular/material';
+import { AnnotationService, Annotation } from '../../shared/annotation/annotation.service';
+import { AddAnnotationComponent } from '../../shared/dialog/add-annotation/add-annotation.component';
 
 export interface TimelineItem {
-  item: Bookmark | AudioComment | Shape;
+  annotation: Annotation;
   position: number;
-  icon: string;
 }
 
 @Component({
@@ -25,6 +26,7 @@ export class TimelineItemsComponent implements OnInit {
   items$: Observable<TimelineItem[]>;
 
   constructor(
+    private annotation: AnnotationService,
     public bookmark: BookmarkService,
     public audio: AudioCommentService,
     private shape: ShapeService,
@@ -34,21 +36,28 @@ export class TimelineItemsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.items$ = Observable.combineLatest(
-      this.bookmark.bookmarks$,
-      this.audio.audioComments$,
-      this.shape.shapes$
-    ).map(([bookmarks, audio, shape]) => [...bookmarks, ...audio, ...shape].map(item => {
-        const position = this.video.calcProgress(item.timestamp, this.video.duration);
-        // TODO: more types
-        const icon = this.getIcon(item.type);
-        return {
-          item: item,
-          position: position,
-          icon: icon
-        };
-      }))
-      .do((res) => console.log(res));
+    // this.items$ = Observable.combineLatest(
+    //   this.bookmark.bookmarks$,
+    //   this.audio.audioComments$,
+    //   this.shape.shapes$
+    // ).map(([bookmarks, audio, shape]) => [...bookmarks, ...audio, ...shape].map(item => {
+    //     const position = this.video.calcProgress(item.timestamp, this.video.duration);
+    //     // TODO: more types
+    //     const icon = this.getIcon(item.type);
+    //     return {
+    //       item: item,
+    //       position: position,
+    //       icon: icon
+    //     };
+    //   }))
+    //   .do((res) => console.log(res));
+    this.items$ = this.annotation.annotations$.map(annotation => annotation.map(item => {
+      const position = this.getPosition(item.timestamp);
+      return {
+        annotation: item,
+        position: position
+      };
+    }));
   }
 
   getPosition(timestamp: number): number {
@@ -57,52 +66,22 @@ export class TimelineItemsComponent implements OnInit {
 
   onClick(item: TimelineItem) {
     this.video.pauseVideo();
-    let component;
-    switch (item.item.type) {
-      case 'bookmark':
-        component = EditBookmarkComponent;
-        break;
-      case 'audio':
-        component = EditAudioCommentComponent;
-        break;
-      case 'shape':
-        return;
-      default:
-        return;
-    }
 
-    const editDialog = this.dialog.open(component, {
+    const editDialog = this.dialog.open(AddAnnotationComponent, {
       data: {
-        item: item.item
+        item: item
       }
     });
 
-    editDialog.afterClosed().subscribe((res) => {
-      if (item.item.type === 'bookmark' && res) {
-        this.bookmark.editBookmark(item.item.id, res);
+      // TODO
+    // editDialog.afterClosed().subscribe((res) => {
+    //   if (item.item.type === 'bookmark' && res) {
+    //     this.bookmark.editBookmark(item.item.id, res);
 
-        this.snackbar.open('Lesezeichen ' + res + ' geändert', null, {
-          duration: 2000
-        });
-      }
-    });
-  }
-
-  private getIcon(type) {
-    let icon;
-    switch (type) {
-      case 'bookmark':
-        icon = 'bookmark_border';
-        break;
-      case 'audio':
-        icon = 'mic';
-        break;
-      case 'shape':
-        icon = 'hdr_weak';
-        break;
-      default:
-        break;
-    }
-    return icon;
+    //     this.snackbar.open('Lesezeichen ' + res + ' geändert', null, {
+    //       duration: 2000
+    //     });
+    //   }
+    // });
   }
 }
