@@ -15,7 +15,7 @@ export class AddAnnotationComponent implements OnInit {
   selectedShape;
   duration = 0;
   durationInterval;
-  tempRec;
+  tempRec: any = {};
   // audioPaused: boolean;
   recStatus;
   inputLabel = 'Titel';
@@ -31,7 +31,6 @@ export class AddAnnotationComponent implements OnInit {
     this.timestamp = this.data.timestamp;
     this.audio.tempRecordSub$.subscribe((record) => {
       this.tempRec = record;
-      // this.audioPaused = record.audio.paused;
     });
     this.audio.status$.subscribe((status) => {
       this.recStatus = status;
@@ -63,10 +62,11 @@ export class AddAnnotationComponent implements OnInit {
     this.audio.stopRecording();
   }
 
-  onSubmit(title: string, shape) {
+  onSubmit(title: string, shape: any) {
     this.dialogRef.close({
       title: title,
-      icon: shape.icon
+      icon: shape.icon,
+      audio: this.tempRec.audio
     });
   }
 

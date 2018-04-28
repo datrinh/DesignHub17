@@ -3,13 +3,15 @@
 
 <mat-dialog-content>
   <mat-form-field>
-    <!-- <input *ngIf="recStatus === 'start'" matInput placeholder="Titel" #title> -->
-    <input matInput value="{{duration | timePipe:'mm:ss'}}" disabled #title>
+    <input matInput placeholder="Titel" #title>
+    <!-- <input matInput value="{{duration | timePipe:'mm:ss'}}" disabled #title> -->
     <span matPrefix>
         <!-- <button *ngIf="recStatus === 'recording'" mat-icon-button><mat-icon class="recording">mic</mat-icon></button> -->
-        <mat-spinner [diameter]="16" [strokeWidth]="2" *ngIf="recStatus === 'recording'"></mat-spinner>   
+           
     </span>
     <span matSuffix>
+      <mat-spinner [diameter]="18" [strokeWidth]="2" *ngIf="recStatus === 'recording'"></mat-spinner>
+      <span *ngIf="recStatus === 'recording'">{{duration | timePipe:'mm:ss'}}</span>
       <button *ngIf="recStatus === 'start'" mat-icon-button (click)="startRec()"><mat-icon>mic</mat-icon></button>
       <button *ngIf="recStatus === 'recording'" mat-icon-button (click)="stopRec()"><mat-icon>stop</mat-icon></button>
       <button *ngIf="recStatus === 'done'" mat-icon-button (click)="play()"><mat-icon>play_arrow</mat-icon></button>

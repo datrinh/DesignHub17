@@ -7,6 +7,7 @@
     <!-- <mat-icon mat-list-icon>bookmark</mat-icon> -->
     <h4 mat-line>{{annotation.title}}</h4>
     <button (click)="deleteAnnotation(annotation.id)" mat-icon-button><mat-icon mat-list-icon>delete</mat-icon></button>    
+    <button *ngIf="annotation.audio" (click)="playRecord(annotation)" mat-icon-button><mat-icon>play_arrow</mat-icon></button>
     <p mat-line> {{annotation.timestamp | timePipe:'mm:ss'}} </p>
   </mat-list-item>
 </mat-list>

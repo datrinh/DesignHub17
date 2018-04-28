@@ -35,134 +35,24 @@ export class ActionControlsComponent implements OnInit {
 
   constructor(
     private annotation: AnnotationService,
-    private bookmark: BookmarkService,
     private video: VideoService,
     private audio: AudioCommentService,
     private dialog: MatDialog,
     private snackbar: MatSnackBar,
     private timePipe: TimePipe,
-    private action: ActionService,
-    private shape: ShapeService
+    // private action: ActionService
   ) { }
 
   ngOnInit() {
-    this.action.mode$.subscribe(
-      mode => this.mode = mode
-    );
+    // this.action.mode$.subscribe(
+    //   mode => this.mode = mode
+    // );
     this.audio.init();
   }
 
-  setMode(mode: string) {
-    this.action.setMode(mode);
-  }
-
-  // addBookmark() {
-  //   this.video.player.pause();
-  //   const bookmarkDialog = this.dialog.open(AddBookmarkComponent, {
-  //     data: {
-  //       timestamp: this.video.currentTime
-  //     }
-  //   });
-  //   bookmarkDialog.afterClosed().subscribe(res => {
-  //     if (res) {
-  //       this.bookmark.createBookmark(this.video.currentTime, res.value);
-  //       this.snackbar.open(`${res.value} wurde gespeichert.`, null, {
-  //         duration: 2000
-  //       });
-  //     }
-  //   });
+  // setMode(mode: string) {
+  //   this.action.setMode(mode);
   // }
-
-  // startRecording() {
-  //   console.log('recording...');
-  //   this.showTooltip();
-  //   this.video.player.pause();
-  //   this.audio.startRecording();
-  //   this.recordIcon = RECORD_ICON.ON;
-  // }
-
-  // stopRecording() {
-  //   console.log('stop recording...');
-  //   this.audio.stopRecording();
-  //   this.recordIcon = RECORD_ICON.OFF;
-  //   this.tooltip.hide();
-  //   this.tooltipLabel = '';
-  //   window.clearInterval(this.pressInterval);
-  // }
-
-  // onPress() {
-  //   this.startRecording();
-  // }
-
-  // onPressUp(e) {
-  //   this.stopRecording();
-  //   const audioCommentDialog = this.dialog.open(AddAudioCommentComponent, {
-  //     data: {
-  //       timestamp: this.video.currentTime
-  //     }
-  //   });
-  //   audioCommentDialog.afterClosed().subscribe(res => {
-  //     if (res) {
-  //       // already preemptively saved
-  //       this.snackbar.open('Kommentar wurde gespeichert.', null, {
-  //         duration: 2000
-  //       });
-  //     } else {
-  //       this.audio.deleteLastRecord();
-  //     }
-  //   });
-  // }
-
-  // showTooltip() {
-  //   this.audioDuration = 0;
-  //   this.tooltip.show();
-  //   this.pressInterval = window.setInterval(() => {
-  //     this.tooltipLabel = this.timePipe.transform(this.audioDuration, 'mm:ss');
-  //     this.audioDuration++;
-  //   }, 1000);
-  // }
-
-  // onTap() {
-  //   this.tooltipLabel = 'Halten zum Aufnehmen';
-  // }
-
-  addAudio() {
-    this.video.player.pause();
-    const audioCommentDialog = this.dialog.open(AddAudioCommentComponent, {
-      data: {
-        timestamp: this.video.currentTime
-      }
-    });
-    audioCommentDialog.afterClosed().subscribe(res => {
-      if (res) {
-        this.audio.saveRecord();
-        this.snackbar.open('Kommentar wurde gespeichert.', null, {
-          duration: 2000
-        });
-      } else {
-        this.audio.reset();
-      }
-    });
-  }
-
-  addShape() {
-    const timestamp = this.video.currentTime;
-    this.video.player.pause();
-    const shapeDialog = this.dialog.open(AddShapeComponent, {
-      data: {
-        timestamp: timestamp
-      }
-    });
-    shapeDialog.afterClosed().subscribe(res => {
-      if (res) {
-        console.log(res);
-        this.shape.createShape(timestamp, res.icon, res.title);
-        this.snackbar.open('Muster wurde gespeichert.', null, {
-          duration: 2000
-        });
-      }
-    });
-  }
 
   addAnnotation() {
     const timestamp = this.video.currentTime;
@@ -178,7 +68,8 @@ export class ActionControlsComponent implements OnInit {
         this.annotation.createAnnotation({
           timestamp: this.video.currentTime,
           shape: res.icon,
-          title: res.title
+          title: res.title,
+          audio: res.audio
         });
         console.log(res);
         this.snackbar.open('Annotation wurde gespeichert.', null, {

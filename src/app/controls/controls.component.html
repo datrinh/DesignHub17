@@ -1,4 +1,4 @@
-<button (click)="videoService.playOrPause()" mat-fab color="accent">
+<button (click)="videoService.playOrPause()" id="playBtn" mat-fab color="white">
   <mat-icon *ngIf="videoService.player.paused">play_arrow</mat-icon>
   <mat-icon *ngIf="!videoService.player.paused">pause</mat-icon>
 </button>

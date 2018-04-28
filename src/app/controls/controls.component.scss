@@ -1,6 +1,5 @@
-mat-progress-bar, mat-slider {
-    // width: 100%;
-    // position: fixed;
-    // bottom: 2em;
-    // left: 0;
+@import "./../../variables.scss";
+
+button#playBtn {
+    color: $dh-orange;
 }

@@ -46,4 +46,9 @@ export class SidenavComponent implements OnInit {
   //   this.snackbar.open('Kommentar wurde gelöscht.', null, { duration: 2000 });
   // }
 
+  playRecord(annotation) {
+    console.log(annotation);
+    this.audio.playRecord(annotation.audio.src);
+  }
+
 }
