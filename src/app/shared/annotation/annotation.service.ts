@@ -2,7 +2,7 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs/Rx';
 import { VideoService } from '../../video/video.service';
 import { Injectable } from '@angular/core';
 import { AudioComment } from '../audio-comment/audio-comment.service';
-import { SocketService } from '../socket/socket.service';
+import { SocketService, Action } from '../socket/socket.service';
 
 export interface Annotation {
   id: number;
@@ -41,14 +41,14 @@ export class AnnotationService {
       audio: annotation.audio
     });
     this.annotations.next(this.annotationStore);
-    this.socket.send({type: 'UPDATE_ANNOTATIONS', payload: this.annotationStore});
+    this.socket.send({action: Action.UPDATE_ANNOTATION, payload: this.annotationStore});
     console.log(this.annotationStore);
   }
 
   deleteAnnotation(id: number) {
     this.annotationStore = this.annotationStore.filter((item) => id !== item.id);
     this.annotations.next(this.annotationStore);
-    this.socket.send({type: 'UPDATE_ANNOTATIONS', payload: this.annotationStore});
+    this.socket.send({action: Action.UPDATE_ANNOTATION, payload: this.annotationStore});
   }
 
 }

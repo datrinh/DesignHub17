@@ -1,6 +1,6 @@
 import { BehaviorSubject, Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
-import { SocketService, SocketMessage } from '../shared/socket/socket.service';
+import { SocketService, SocketMessage, Action } from '../shared/socket/socket.service';
 
 const FPS = 60;
 const AMOUNT_FRAMES_SKIPPED = 1;
@@ -44,7 +44,7 @@ export class VideoService {
       (res: any) => {
         const result = JSON.parse(res);
         // console.log(JSON.parse(res).type);
-        switch (result.type) {
+        switch (result.action) {
           case 'PLAYPAUSE':
             this.playOrPause();
             break;
@@ -57,8 +57,6 @@ export class VideoService {
           case 'JUMP_TO':
             this.currentTime = res.payload.timestamp;
             break;
-          default:
-            console.warn('Unkown type: ', res);
         }
       }
     );
@@ -68,11 +66,11 @@ export class VideoService {
     if (this.isPlaying()) {
       this.player.pause();
       this.minimap.pause();
-      this.socket.send({type: 'PAUSE'});
+      this.socket.send({action: Action.PAUSE});
     } else {
       this.player.play();
       this.minimap.play();
-      this.socket.send({type: 'PLAY'});
+      this.socket.send({action: Action.PLAY});
     }
   }
 
@@ -94,7 +92,7 @@ export class VideoService {
   pauseVideo() {
     this.player.pause();
     this.minimap.pause();
-    this.socket.send({type: 'PAUSE'});
+    this.socket.send({action: Action.PAUSE});
   }
 
   // frameForward(amount: number) {
