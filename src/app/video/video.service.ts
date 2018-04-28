@@ -1,6 +1,7 @@
 import { BehaviorSubject, Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
-import { SocketService, SocketMessage, Action } from '../shared/socket/socket.service';
+import { SocketService, SocketMessage } from '../shared/socket/socket.service';
+import { Action } from '../shared/socket/action.model';
 
 const FPS = 60;
 const AMOUNT_FRAMES_SKIPPED = 1;

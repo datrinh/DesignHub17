@@ -2,7 +2,8 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs/Rx';
 import { VideoService } from '../../video/video.service';
 import { Injectable } from '@angular/core';
 import { AudioComment } from '../audio-comment/audio-comment.service';
-import { SocketService, Action } from '../socket/socket.service';
+import { SocketService } from '../socket/socket.service';
+import { Action } from '../socket/action.model';
 
 export interface Annotation {
   id: number;

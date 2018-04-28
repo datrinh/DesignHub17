@@ -4,14 +4,9 @@ import { Observable } from 'rxjs/Observable';
 import { Annotation } from '../annotation/annotation.service';
 import { VideoService } from '../../video/video.service';
 import * as socketIo from 'socket.io-client';
+import { Action } from './action.model';
 
 const SERVER_URL = 'http://localhost:3000';
-
-export enum Action {
-  PLAY = 'PLAY',
-  PAUSE = 'PAUSE',
-  UPDATE_ANNOTATION = 'UPDATE_ANNOTATION'
-}
 
 export interface SocketMessage {
   action: Action;
