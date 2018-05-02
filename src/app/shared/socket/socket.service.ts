@@ -20,6 +20,9 @@ export class SocketService {
 
   constructor() {
     this.socket = socketIo(SERVER_URL);
+    this.socket.on('connect', _ => {
+      console.log('Connected to WebSocket!');
+    });
 
     this.socket$ = new Observable<any>(observer => {
       this.socket.on('message', (data: any) => observer.next(data));
@@ -30,7 +33,6 @@ export class SocketService {
     const tmp: any = {};
     tmp.type = message.action;
     tmp.payload = message.payload;
-    // this.socket$.next(JSON.stringify(tmp));
     this.socket.emit('message', JSON.stringify(tmp));
   }
 }

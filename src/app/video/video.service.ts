@@ -42,8 +42,8 @@ export class VideoService {
 
   constructor(private socket: SocketService) {
     socket.socket$.subscribe(
-      (res: any) => {
-        const result = JSON.parse(res);
+      (result: any) => {
+        // const result = JSON.parse(res);
         // console.log(JSON.parse(res).type);
         switch (result.action) {
           case 'PLAYPAUSE':
@@ -56,8 +56,10 @@ export class VideoService {
             this.player.pause();
             break;
           case 'JUMP_TO':
-            this.currentTime = res.payload.timestamp;
+            this.currentTime = result.payload.timestamp;
             break;
+          default:
+            console.warn(result);
         }
       }
     );
