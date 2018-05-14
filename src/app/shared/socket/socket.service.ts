@@ -6,7 +6,7 @@ import { VideoService } from '../../video/video.service';
 import * as socketIo from 'socket.io-client';
 import { Action } from './action.model';
 
-const SERVER_URL = 'http://localhost:3000';
+const SERVER_URL = `http://192.168.43.100:3000`;
 
 export interface SocketMessage {
   action: Action;
