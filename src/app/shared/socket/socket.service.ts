@@ -19,20 +19,20 @@ export class SocketService {
   socket$;
 
   constructor() {
-    this.socket = socketIo(SERVER_URL);
-    this.socket.on('connect', _ => {
-      console.log('Connected to WebSocket!');
-    });
+    // this.socket = socketIo(SERVER_URL);
+    // this.socket.on('connect', _ => {
+    //   console.log('Connected to WebSocket!');
+    // });
 
-    this.socket$ = new Observable<any>(observer => {
-      this.socket.on('message', (data: any) => observer.next(data));
-    });
+    // this.socket$ = new Observable<any>(observer => {
+    //   this.socket.on('message', (data: any) => observer.next(data));
+    // });
   }
 
   send(message: SocketMessage) {
-    const tmp: any = {};
-    tmp.type = message.action;
-    tmp.payload = message.payload;
-    this.socket.emit('message', JSON.stringify(tmp));
+    // const tmp: any = {};
+    // tmp.type = message.action;
+    // tmp.payload = message.payload;
+    // this.socket.emit('message', JSON.stringify(tmp));
   }
 }

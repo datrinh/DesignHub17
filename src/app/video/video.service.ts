@@ -41,28 +41,28 @@ export class VideoService {
     );
 
   constructor(private socket: SocketService) {
-    socket.socket$.subscribe(
-      (result: any) => {
-        // const result = JSON.parse(res);
-        // console.log(JSON.parse(res).type);
-        switch (result.action) {
-          case 'PLAYPAUSE':
-            this.playOrPause();
-            break;
-          case 'PLAY':
-            this.player.play();
-            break;
-          case 'PAUSE':
-            this.player.pause();
-            break;
-          case 'JUMP_TO':
-            this.currentTime = result.payload.timestamp;
-            break;
-          default:
-            console.warn(result);
-        }
-      }
-    );
+    // socket.socket$.subscribe(
+    //   (result: any) => {
+    //     // const result = JSON.parse(res);
+    //     // console.log(JSON.parse(res).type);
+    //     switch (result.action) {
+    //       case 'PLAYPAUSE':
+    //         this.playOrPause();
+    //         break;
+    //       case 'PLAY':
+    //         this.player.play();
+    //         break;
+    //       case 'PAUSE':
+    //         this.player.pause();
+    //         break;
+    //       case 'JUMP_TO':
+    //         this.currentTime = result.payload.timestamp;
+    //         break;
+    //       default:
+    //         console.warn(result);
+    //     }
+    //   }
+    // );
   }
 
   playOrPause() {
